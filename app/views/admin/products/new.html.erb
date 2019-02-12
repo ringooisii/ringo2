@@ -1,0 +1,36 @@
+<div class="container">
+	<div class="row">
+		<div class="main col-md-offset-2 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2>商品情報 新規登録</h2></div>
+				<div class="panel-body">
+					<%= form_for(@product) do |f| %>
+					<p>
+						<%= f.label :アーティスト名 %>
+						<%= f.text_field :artist_name, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :シングル名 %>
+						<%= f.text_field :product_name, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :サムネイル %>
+						<%= f.file_field :product_image, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :価格 %>
+						<%= f.text_field :price, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :レーベル %>
+						<%= f.text_field :company, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :ジャンル %>
+						<%= f.select :genre, [["JPOP", "jpop"], ["KPOP", "kpop"]], :prompt => "選択してください" %>
+					</p>
+			
+					<% end %>
+		</div>
+	</div>
+</div>
