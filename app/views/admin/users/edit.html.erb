@@ -27,13 +27,15 @@
 	      <%= f.password_field :password :password_confirmation, class: "password_confirm" %>
 
 	    	<div class="actions">
-	        <%= f.submit "update user" %>
+	        <%= f.submit "登録" %>
+	    	</div>
+	    	<div>
+	    		<%= link_to '削除', admin_users_path ,method: :delete %>
 	    	</div>
 			</div>
 	  <% end %>
 
 		<div class="panel-footer">
-			パネルのフッター
 		</div>
 	</div>
 
