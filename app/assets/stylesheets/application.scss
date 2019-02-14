@@ -16,15 +16,7 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
-  .row {
-	text-align: center;
-  }
-
-  .actions {
-  	padding-top: 15px;
-  	padding-bottom: 15px;
-  }
-
-  .sign-in-box {
-  	text-align: center;
-  }
+.footer {
+  background-color: #c0c0c0;
+  padding: 10px 0;
+}
