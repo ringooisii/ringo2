@@ -1,6 +1,6 @@
+<div>
 <h1>Top(商品一覧）ページです</h1>
 <p>各ページへのリンクを仮置き</p>
-
 <ul>
 	<li><a href= "http://localhost:3000/users/sign_in">userログイン画面</a></li>
 	<li><a href= "http://localhost:3000/users/sign_up">user新規登録画面</a></li>
@@ -20,3 +20,37 @@
 	<li><a href= "http://localhost:3000/admin/orders">注文一覧画面(管理者側Top）</a></li>
 	<li><a href= "http://localhost:3000/admin/orders/1">注文詳細画面id1(管理者側）</a></li>
 </ul>
+</div>
+
+
+
+<div class="container">
+	<div class="row">
+
+		<div class= "col-md-2">
+			<p class="title">検索</p>
+			<%= search_form_for(@search, method: :get)  do |f| %> <!--検索機能-->
+    			<%= f.label :product_name_cont, "名前" %>
+    			<%= f.text_field :product_name_cont,placeholder: "部分一致"%>
+    			<%= f.label :price_lt, '価格' %>
+    			<%= f.number_field :price_lt %>
+  			<%= f.submit "検索" %>
+			<% end %>
+			</div>
+
+			<div class="col-md-10">
+				<p class="title">CD</p>
+				<div class="item-box">
+					<% @products.each do |product| %>
+						<div class="item">
+							<%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '150x150') %>
+							<p>商品名:<%= product.product_name %></p>
+							<p>アーティスト名:<%= product.artist_name %></p>
+							<p>価格:<%= product.price %>円</p>
+						</div>
+					<% end %>
+					<%= paginate @products %>
+				</div>
+			</div>
+				</div>
+</div>
