@@ -11,8 +11,13 @@ class Admin::ProductsController < ApplicationController
 
 	def create
 		product = Product.new(product_params)
-		product.save
+	 if product.save
 		redirect_to root_path
+	 else
+	 	flash[:notice] = "error"
+	 	@product = Product.new
+	 	render action: :new
+	 end
 	end
 
 	def show
