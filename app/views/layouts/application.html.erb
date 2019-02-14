@@ -24,18 +24,8 @@
       <% end %>
     </div>
 
-    <% if user_signed_in? %>
-      <!-- ユーザーがログインしていない時 -->
-      <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
-        <ul class="nav navbar-nav">
-          <li><%= link_to '新規会員登録', new_user_registration_path %></li>
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <li>ゲスト様</li>
-        </ul>
-      </div>
-
-    <% elsif user_signed_in? && current_user.id == 1 %>
-      <!-- 管理者がログインしていない時 -->
+    <% if user_signed_in? && current_user.id == 1 %>
+      <!-- 管理者がログインしている時 -->
       <p class="navbar-text">管理者画面</p>
       <div class="collapse navbar-collapse navbar-right" id="navbarEexample">
         <ul class="nav navbar-nav">
@@ -44,13 +34,23 @@
         </ul>
       </div>
 
-    <% else %>
+    <% elsif user_signed_in? %>
       <!-- ユーザーがログインしている時 -->
       <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
         <ul class="nav navbar-nav">
           <li><%= link_to 'カート', carts_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
           <li><%= link_to 'ユーザー名', user_path %></li>
+        </ul>
+      </div>
+
+    <% else %>
+      <!-- ユーザーがログインしていない時 -->
+      <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
+        <ul class="nav navbar-nav">
+          <li><%= link_to '新規会員登録', new_user_registration_path %></li>
+          <li><%= link_to 'ログイン', new_user_session_path %></li>
+          <li><a>ゲスト様</a></li>
         </ul>
       </div>
 
