@@ -1,1 +1,43 @@
-<h1>admin users edit画面</h1>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		登録者情報 編集
+	</div>
+	<div class="panel-body">
+		<%= form_for@user do |f| %>
+
+    	<div class="field">
+	    	<%= f.label :名前 %>
+	      <%= f.text_field :last_name, class: "last_name" %>
+	      <%= f.text_field :first_name, class: "first_name" %>
+
+	    	<%= f.label :フリガナ %>
+	      <%= f.text_field :first_name_kana, class: "first_name_kana" %>
+	      <%= f.text_field :first_name_kana, class: "first_name_kana" %>
+
+	    	<%= f.label :郵便番号 %>
+	      <%= f.text_field :postcode, class: "postcode" %>
+
+	    	<%= f.label :住所 %>
+	      <%= f.text_field :address, class: "address" %>
+
+	    	<%= f.label :メールアドレス %>
+	      <%= f.email_field :password, class: "password" %>
+
+	    	<%= f.label :パスワード %>
+	      <%= f.password_field :password :password_confirmation, class: "password_confirm" %>
+
+	    	<div class="actions">
+	        <%= f.submit "登録" %>
+	    	</div>
+	    	<div>
+	    		<%= link_to '削除', admin_users_path ,method: :delete %>
+	    	</div>
+			</div>
+	  <% end %>
+
+		<div class="panel-footer">
+		</div>
+	</div>
+
+
+password_field
