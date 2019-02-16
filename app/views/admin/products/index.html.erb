@@ -1,5 +1,39 @@
-<h1>登録商品一覧画面</h1>
+<div class="container">
+		<div class="row">
+			<button class="col-md-offset-10 btn btn-link" type="button">
+				<a href= "http://localhost:3000/admin/products/new">新規登録</a>
+			</button>
+		</div>
+	<div class="row">
+		<div class="main col-md-offset-2 col-md-8">
+		<h1>登録商品一覧画面</h1>
+		<table class="table">
+			<thead>
+			<tr>
+				<th>商品ID</th>
+				<th>サムネイル</th>
+				<th>タイトル</th>
+				<th>在庫</th>
+				<th>価格</th>
+				<th></th>
+				<th></th>
+			</tr>
+			</thead>
+			<% @product.each do |product| %>
+			<tbody>
+			<tr>
+				<th><%= product.id %></th>
+				<td><%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+				<td><%= product.product_name %></td>
+				<td><%= product.stock_quantity %></td>
+				<td><%= product.genre %></td>
+				<td><%= link_to "詳細", admin_product_path(product.id) %></td>
+				<td><%= link_to "削除", admin_product_path(product.id), method: :delete %></td>
+				<% end %>
+			</tr>
+			</tbody>
+			</table>
+		</div>
+	</div>
+</div>
 
-<%= @product.each do |product| %>
-		<%= product.artist_name %>
-		<% end %>

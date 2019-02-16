@@ -11,11 +11,39 @@ class Admin::ProductsController < ApplicationController
 
 	def create
 		product = Product.new(product_params)
-		product.save
+	 if product.save
 		redirect_to root_path
+	 else
+	 	flash[:notice] = "error"
+	 	@product = Product.new
+	 	render action: :new
+	 end
 	end
 
 	def show
+		@products = Product.find(params[:id])
+		#@product = Product.all.includes(:discs)
+	end
+
+	def destroy
+		@product = Product.find(params[:id])
+		@product.destroy
+		redirect_to admin_products_path
+	end
+
+	def edit
+		@product = Product.find(params[:id])
+	end
+
+	def update
+			@product = Product.find(params[:id])
+		if @product.update(product_params)
+			flash[:notice] = "successfully"
+			redirect_to admin_products_path(@product)
+		else
+			flash[:notice] = "error"
+			render action: :edit
+		end
 	end
 
 	private
