@@ -1,19 +1,46 @@
 <div class="container">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-2">
+		<div class="col-md-12">
 			<h2>注文詳細 一覧</h2>
 			<div class="row">
         <div class="col-md-6">
-          <p>注文番号</p>
-          <p>ステータス</p>
-          <p>購入者</p>
+          <p>注文番号</p><%= @order.id %>
+          <p>ステータス</p><%= @order.order_status %>
+          <p>購入者</p><%= @order.order_name %>
         </div>
         <div class="col-md-6">
-          <p>購入日時</p>
+          <p>購入日時</p><%= @order.created_at %>
           <p>発送日時</p>
         </div>
       </div>
-      <div></div>
+      <div>
+        <table>
+          <thead>
+            <tr>
+              <th>商品 ID</th>
+              <th>商品名</th>
+              <th>個数</th>
+              <th>価格</th>
+              <th>合計</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <#% @order_products.each do |p| %>
+            <tr>
+              <td><%= p.product_id %></td>
+              <td><%= p.product_id.product_name %></td>
+              <td><%= p.order_quantity %></td>
+              <td><%= p.product_id.price %></td>
+              <td><%= p.order_quantity * p.product_id.price %></td>
+              <td><div>
+                <%= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
+              </div></td>
+            </tr>
+            <#% end %>
+          </tbody>
+        </table>
+      </div>
 
 
 
