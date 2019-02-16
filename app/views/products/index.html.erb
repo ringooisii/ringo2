@@ -2,8 +2,11 @@
 <div class="container">
 
 	<div class="row">
+		<%= image_tag 'top-image.jpg' %>
+		</div>
+		<br>
 
-
+	<div class="row">
 		<div class= "col-md-2">
 			<p class="title">検索</p>
 			<%= search_form_for(@search, method: :get)  do |f| %> <!--検索機能-->
@@ -23,11 +26,14 @@
 							<%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '150x150') %>
 							<p>商品名:<%= product.product_name %></p>
 							<p>アーティスト名:<%= product.artist_name %></p>
+							<p>ジャンル:<%= product.genre %>円</p>
 							<p>価格:<%= product.price %>円</p>
 						</div>
 					<% end %>
 					<%= paginate @products %>
 				</div>
 			</div>
-				</div>
+
+	</div>
+	<br>
 </div>
