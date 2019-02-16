@@ -10,11 +10,7 @@ class Admin::UsersController < ApplicationController
 	end
 
 	def edit
-<<<<<<< HEAD
-		
-=======
-	
->>>>>>> master
+
 	end
 
 	def update
