@@ -1,1 +1,55 @@
-<h1>admin products edit画面</h1>
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
+<div class="container">
+	<div class="row">
+		<div class="main col-md-offset-2 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2>商品情報 新規登録</h2></div>
+				<div class="panel-body">
+					<%= form_for ([:admin,@product]) do |f| %>
+					<p>
+						<%= f.label :アーティスト名 %>
+						<%= f.text_field :artist_name, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :シングル名 %>
+						<%= f.text_field :product_name, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :サムネイル %>
+						<%= f.file_field :product_image, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :価格 %>
+						<%= f.text_field :price, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :レーベル %>
+						<%= f.text_field :company, class: "form-control" %>
+					</p>
+					<p>
+						<%= f.label :ジャンル %>
+						<%= f.select :genre, Product.genres.keys.to_a %>
+					</p>
+					<div id="discs">
+						<%= f.fields_for :discs do |disc| %>
+					<%= render 'disc_fields', f: disc %>
+					<% end %>
+					<div id="links">
+						<%= link_to_add_association 'ディスク追加',f, :discs %>
+					</div>
+					<p>
+						<%= f.label :在庫 %>
+						<%= f.text_field :stock_quantity %>
+					</p>
+				</div>
+			</div>
+		</div>
+			<div class="actions row">
+				<%= f.submit :新規商品登録,class: "btn btn-primary col-md-offset-2 col-md-8" %>
+					<% end %>
+
+
+	</div>
+</div>
