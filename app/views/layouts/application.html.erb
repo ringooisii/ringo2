@@ -19,9 +19,21 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <%= link_to root_path do %>
-        <%= image_tag "logo.png" %>
+
+      <% if user_signed_in? && current_user.id == 1 %>
+
+        <%= link_to admin_orders_path do %>
+          <%= image_tag "logo.png" %>
+        <% end %>
+
+      <% else %>
+
+        <%= link_to root_path do %>
+          <%= image_tag "logo.png" %>
+        <% end %>
+
       <% end %>
+
     </div>
 
     <% if user_signed_in? && current_user.id == 1 %>
@@ -31,6 +43,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to '登録者 一覧', admin_users_path %></li>
           <li><%= link_to '登録商品 一覧', admin_products_path %></li>
+          <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
         </ul>
       </div>
 
@@ -40,7 +53,7 @@
         <ul class="nav navbar-nav">
           <li><%= link_to 'カート', carts_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
-          <li><%= link_to 'ユーザー名', user_path %></li>
+          <li><%= link_to current_user.last_name, user_path %></li>
         </ul>
       </div>
 

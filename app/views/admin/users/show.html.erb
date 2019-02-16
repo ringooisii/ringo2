@@ -1,23 +1,22 @@
-<div class="cotainer">
+<div class="container">
 	<div class="row">
-		<div class="col-md-4" style="background-color: orange">
-			<h2>登録者 詳細情報</h2>
+		<div class="col-md-3">
+			<h2 class="text-left">登録者 詳細情報</h2>
 			<table class="table">
-				<thead>
-					<tr><th>登録者 ID：</th><td><%= @user.id %></td><th>苗字：</th><td><%= @user.first_name %></td></tr>
+					<tr><th>登録者 ID：</th><td><%= @user.id %></td></tr>
+					<tr><th>苗字：</th><td><%= @user.first_name %></td></tr>
 					<tr><th>名前：</th><td><%= @user.last_name %></td></tr>
 					<tr><th>郵便番号：</th><td><%= @user.postcode %></td></tr>
 					<tr><th>住所：</th><td><%= @user.address %></td></tr>
 					<tr><th>メールアドレス：</th><td><%= @user.email %></td></tr>
 					<tr><th>電話番号：</th><td><%= @user.phone_number %></td></tr>
-				</thead>
 			</table>
-			<div>
+			<div class="btn btn-default btn-block">
 				<%= link_to '編集', edit_admin_user_path(@user.id) %>
 			</div>
 		</div>
-		<div class="col-md-8" style="background-color: green">
-			<h1>登録者 購入履歴</h1>
+		<div class="col-md-9">
+			<h2 class="text-left">登録者 購入履歴</h2>
 			<table class="table">
 				<thead>
 					<tr>
@@ -48,6 +47,3 @@
 
 	</div>
 </div>
-
-
-order.order_items
