@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   root 'products#index'
   resource :user, only: [:show, :edit, :update, :destroy]
   resources :products, only: [:index, :show, :destroy]
-  resources :carts, only: [:index, :update, :destroy]
+  resources :carts, only: [:index, :create, :update, :destroy]
   resources :shippings, only: [:index, :create, :destroy]
   resources :orders, only: [:index, :create]
   resources :order_products, only: [:create, :update, :destroy]
