@@ -1,3 +1,6 @@
+<% if flash[:notice] %>
+	<p><%= flash[:notice] %></p>
+<% end %>
 <div class="container">
 	<div class="row">
 		<div class="main col-md-offset-2 col-md-8">
@@ -27,7 +30,7 @@
 					</p>
 					<p>
 						<%= f.label :ジャンル %>
-						<%= f.select :genre, [["JPOP", "1"], ["KPOP", "2"]], :prompt => "選択してください" %>
+						<%= f.select :genre, Product.genres.keys.to_a %>
 					</p>
 
 					<div id="discs">
