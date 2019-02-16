@@ -1,1 +1,36 @@
-<h1>admin products show画面</h1>
+<div class="container">
+	<div class="row">
+		<div class="main col-md-offset-2 col-md-8">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h2>商品情報 詳細</h2></div>
+				<div class="panel-body">
+					<dl class="dl-horizontal">
+					<dt>アーティスト名</dt>
+					<dd><%= @products.artist_name %></dd>
+					<dt>シングル名</dt>
+					<dd><%= @products.product_name %></dd>
+					<dt>サムネイル</dt>
+					<dd><%= attachment_image_tag @products, :product_image, fallback: "noimage.png",size: '100x100' %></dd>
+					<dt>価格</dt>
+					<dd><%= @products.price %></dd>
+					<dt>レーベル</dt>
+					<dd><%= @products.genre %></dd>
+						<% @products.discs.each do |disc| %>
+							<dt>ディスク</dt>
+							<dd><%= disc.disc_name %></dd>
+						<% disc.songs.each do |song| %>
+							<dt>曲名</dt>
+							<dd><%= song.title %></dd>
+						<% end %>
+						<% end %>
+					<dt>在庫</dt>
+					<dd><%= @products.stock_quantity %></dd>
+				</div>
+				</div>
+				<%= link_to "編集", edit_admin_product_path %>
+				<a href= "http://localhost:3000/admin/products/new">削除</a>
+			</div>
+		</div>
+	</div>
+</div>
+
