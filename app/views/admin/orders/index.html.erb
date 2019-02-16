@@ -1,16 +1,16 @@
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
-				<h2  class="text-left">サイト内状況</h2>
-				<div>
-					<h3 class="text-left">売り上げ</h3>
-					<div>10000000</div> <!-- まだ -->
+			<div class="col-md-3 panel panel-default">
+					<h2  class="text-left">サイト内状況</h2>
+					<div>
+						<h3 class="text-left">売り上げ</h3>
+						<p class="admin_sitestatus_text">10000000</p> <!-- まだ -->
+					</div>
+					<div>
+						<h3 class="text-left">登録者数</h3>
+						<p><%= @users %></p>
+					</div>
 				</div>
-				<div>
-					<h3 class="text-left">登録者数</h3>
-					<div><%= @users %></div>
-				</div>
-			</div>
 			<div class="col-md-9">
 				<h2 class="text-left">注文一覧</h2>
 				<table class="table">

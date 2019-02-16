@@ -1,6 +1,8 @@
 class Admin::OrdersController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :only_admin_user
+
 
   def index
   	@orders = Order.all
@@ -16,4 +18,12 @@ class Admin::OrdersController < ApplicationController
 
   end
 
+
+
+  private
+  def only_admin_user
+    if current_user.id != 1
+      redirect_to products_path
+    end
+  end
 end
