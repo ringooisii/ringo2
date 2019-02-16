@@ -9,7 +9,7 @@ class Admin::OrdersController < ApplicationController
 
   def show
      @order = Order.find(params[:id])
-     @order_products = Order_products.where(order_id: @order.id)
+     # @order_products = Order_products.where(order_id: @order.id)
   end
 
   def create

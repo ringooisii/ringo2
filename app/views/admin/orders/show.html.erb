@@ -6,7 +6,7 @@
         <div class="col-md-6">
           <p>注文番号</p><%= @order.id %>
           <p>ステータス</p>
-          <%= form_for @order, do |f| %>
+          <%= form_for @order do |f| %>
             <%= f.select :order_status, [0, 1] %>
             <%= f.submit Create %>
           <% end %>
@@ -29,20 +29,20 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
-            <% @order_products.each do |p| %>
+         <!--  <tbody>
+            <% #@order_products.each do |p| %>
             <tr>
-              <td><%= p.product_id %></td>
-              <td><%= p.product_id.product_name %></td>
-              <td><%= p.order_quantity %></td>
-              <td><%= p.product_id.price %></td>
-              <td><%= p.order_quantity * p.product_id.price %></td>
+              <td><%#= p.product_id %></td>
+              <td><%#= p.product_id.product_name %></td>
+              <td><%#= p.order_quantity %></td>
+              <td><%#= p.product_id.price %></td>
+              <td><%#= p.order_quantity * p.product_id.price %></td>
               <td><div>
-                <%= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
+                <%#= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
               </div></td>
             </tr>
             <#% end %>
-          </tbody>
+          </tbody> -->
         </table>
       </div>
 
