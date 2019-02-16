@@ -11,8 +11,9 @@
 	float: left;
 	width: 23%;
 	margin-right: 2%;
+	margin-top: 1%;
 	border: #dfdfdf 1px solid;
-	height: 300px;
+	height: 290px;
 	text-align: center;
 	padding-top: 30px;
 }
@@ -31,4 +32,9 @@ p.title {
 .box {
 	border: #dfdfdf 1px solid;
 }
+
+.text-right {
+	text-align: right;
+}
+
 
