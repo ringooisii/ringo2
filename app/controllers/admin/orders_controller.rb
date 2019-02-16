@@ -11,4 +11,9 @@ class Admin::OrdersController < ApplicationController
      @order = Order.find(params[:id])
      @order_products = Order_products.where(order_id: @order.id)
   end
+
+  def create
+
+  end
+
 end
