@@ -1,20 +1,26 @@
-	<div class="container">
+	<div class="container admin_orderbox">
 		<div class="row">
 				<div class="col-md-3">
-					<h2>サイト内状況</h2>
-					<table class="table admin_sitestatus_text">
-							<tr>
-								<th>売り上げ</th>
-								<td>data</td>
-							</tr>
-							<tr>
-								<th>登録者数</th>
-								<td><%= @users %></td>
-							</tr>
-					</table>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h2 class="panel-title">サイト内状況</h2>
+						</div>
+						<div class="panel-body">
+							<table class="table">
+								<tr>
+									<th>売り上げ</th>
+									<td>data</td>
+								</tr>
+								<tr>
+									<th>登録者数</th>
+									<td><%= @users %></td>
+								</tr>
+							</table>
+						</div>
+					</div>
 				</div>
 			<div class="col-md-9">
-				<h2>注文一覧</h2>
+				<div class="admin_order_headline"><h2>注文一覧</h2></div>
 				<table class="table">
 					<thead>
 						<tr>

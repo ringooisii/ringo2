@@ -1,3 +1,24 @@
 // Place all the styles related to the admin/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin_userbox {
+    margin: 20px 0;
+}
+
+.admin_user_headline {
+  background-image: image-url("8bit_mono.jpeg");
+  padding: 10px 0;
+  margin-bottom: 15px;
+  border: 1px #000000 solid;
+}
+
+.admin_user_headline h2 {
+  padding-left: 10px;
+}
+
+.admin_user_edit_title {
+  margin-right: 10px;
+  width: 30%;
+  text-align: right;
+}
