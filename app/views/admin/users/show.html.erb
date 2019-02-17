@@ -16,7 +16,7 @@
 			</div>
 		</div>
 		<div class="col-md-9">
-			<h2 class="text-left">登録者 購入履歴</h2>
+			<h2 class="text-left">購入履歴</h2>
 			<table class="table">
 				<thead>
 					<tr>
@@ -24,7 +24,6 @@
 						<th>配送状況</th>
 						<th>配送先</th>
 						<th>購入者</th>
-						<th></th>
 						<th>注文詳細</th>
 						<th>購入日時</th>
 					</tr>
@@ -32,8 +31,10 @@
 				<tbody>
 					<% @orders.each do |order| %>
 					<tr>
-						<td><%= order.id %></td>
+						<td><%= link_to order.id, admin_order_path(order.id) %></td>
 						<td><%= order.order_status %></td>
+						<td><%= order.order_address %></td>
+						<td><%= order.order_name %></td>
 						<td>
 							<% order.order_products.each do |p| %>
 								<%= p.product_id.product_name %>

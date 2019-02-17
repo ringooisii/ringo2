@@ -7,11 +7,20 @@ class Admin::OrdersController < ApplicationController
   def index
   	@orders = Order.all
     @users = User.count
+    @orders.each do |order|
+      @order_products = OrderProduct.where(order_id: order.id)
+      @order_products.each do |p|
+        @p = Product.find(p.product_id)
+      end
+    end
   end
 
   def show
      @order = Order.find(params[:id])
      @order_products = OrderProduct.where(order_id: @order.id)
+     @order_products.each do |product|
+      @p = Product.find(product.product_id)
+    end
   end
 
   def update
@@ -19,7 +28,6 @@ class Admin::OrdersController < ApplicationController
     if order.update(order_params)
       redirect_to admin_order_path(order.id)
     end
-
   end
 
 

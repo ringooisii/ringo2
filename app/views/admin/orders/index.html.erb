@@ -1,18 +1,20 @@
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3 panel panel-default">
-					<h2  class="text-left">サイト内状況</h2>
-					<div>
-						<h3 class="text-left">売り上げ</h3>
-						<p class="admin_sitestatus_text">10000000</p> <!-- まだ -->
-					</div>
-					<div>
-						<h3 class="text-left">登録者数</h3>
-						<p class="admin_sitestatus_text"><%= @users %></p>
-					</div>
+				<div class="col-md-3">
+					<h2>サイト内状況</h2>
+					<table class="table admin_sitestatus_text">
+							<tr>
+								<th>売り上げ</th>
+								<td>data</td>
+							</tr>
+							<tr>
+								<th>登録者数</th>
+								<td><%= @users %></td>
+							</tr>
+					</table>
 				</div>
 			<div class="col-md-9">
-				<h2 class="text-left">注文一覧</h2>
+				<h2>注文一覧</h2>
 				<table class="table">
 					<thead>
 						<tr>
@@ -31,11 +33,7 @@
 							<td><%= order.order_status %></td>
 							<td><%= order.order_address %></td>
 							<td><%= order.order_name %></td>
-							<td>
-								<% order.order_products.each do |p| %>
-									<%= p.product_id.product_name %>
-								<% end %>
-							</td>
+							<td><%= @p.product_name %></td>
 							<td><%= order.created_at %></td>
 						</tr>
 						<% end %>
