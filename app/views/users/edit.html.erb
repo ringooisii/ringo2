@@ -1,2 +1,37 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<% if @user.errors.any? %>
+   <%= @user.errors.count %>
+        <% @user.errors.full_messages.each do |message| %>error
+            <%= message %>
+        <% end %>
+ <% end %>
+
+<div class="user-edit">
+  <h2>登録情報編集</h2><br>
+  <%= form_for(@user) do |f| %>
+ 
+    <%= f.label :名前 %><br>
+
+  <div class="m">
+    <%= f.text_field :first_name,placeholder:"姓" %><%= f.text_field :last_name,placeholder:"姓" %><br>
+  </div>
+      <%= f.label :フリガナ %><br>
+      <div class="m">
+        <%= f.text_field :first_name_kana,placeholder:"姓" %><%= f.text_field :last_name_kana,placeholder:"ナマエ" %><br>
+      </div>
+      <%= f.label :郵便番号　%><br>
+      <div class="m">
+        <%= f.text_field :postcode,placeholder:"郵便番号" %><br>
+      </div>
+      <%= f.label :住所 %><br>
+      <div class="m">
+        <%= f.text_field :address,placeholder:"住所" %><br>
+      </div>
+      <%= f.label :パスワード %><br>
+      <div class="m">
+        <%= f.text_field :password,placeholder:"パスワード" %><%= f.text_field :password_confirmation,placeholder:"パスワード再入力" %><br>
+      </div>
+       <div class="m">
+      <%= f.submit "編集" %>
+    </div>
+      <% end %>
+    </div>

@@ -16,7 +16,57 @@
   @import "bootstrap-sprockets";
   @import "bootstrap";
 
+
+
+  .update-actions {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+  .sign-in-box {
+    text-align: center;
+  }
+
+.user-new {
+  margin-left: 500px;
+  }
+
+
+  .sign-in-box {
+    text-align: center;
+  }
+
+  .user-edit {
+   padding-left:500px;
+  }
+
+ .edit-box {
+   text-align: center;
+    margin: 2em 0;
+    font-weight: bold;
+    color: #6091d3;/*文字色*/
+    background: #FFF;
+    border: solid 3px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+
+ }
+
+.m {
+  padding: 5px 0 5px 0;
+}
+
+.ss {
+	margin-left: 20px;
+}
+
+
+
 .footer {
   background-color: #c0c0c0;
   padding: 10px 0;
 }
+
+
+
+
+
