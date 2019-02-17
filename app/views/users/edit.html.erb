@@ -1,3 +1,10 @@
+<% if @user.errors.any? %>
+   <%= @user.errors.count %>
+        <% @user.errors.full_messages.each do |message| %>error
+            <%= message %>
+        <% end %>
+ <% end %>
+
 <div class="user-edit">
   <h2>登録情報編集</h2><br>
   <%= form_for(@user) do |f| %>

@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def show
   	@user = current_user
-    @order_products = 
-    @order_product = current_user
   end
 
   def edit
@@ -10,10 +8,10 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user =current_user
+     @user =current_user
   if @user.update(user_params)
     flash[:notice] = "User was successfully updated."
-    redirect_to user_path
+    redirect_to root_path
     
   else
     render :edit
@@ -21,6 +19,9 @@ class UsersController < ApplicationController
   end
 
   def destroy
+     @user = current_user
+     @user.destroy
+      redirect_to edit_user_path
   end
 end
  private
