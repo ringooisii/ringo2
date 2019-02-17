@@ -4,17 +4,30 @@
 			<h2>注文詳細 一覧</h2>
 			<div class="row">
         <div class="col-md-6">
-          <p>注文番号</p><%= @order.id %>
-          <p>ステータス</p>
-          <%#= form_for(@order) do |f| %>
-            <%#= f.select :order_status, [0, 1] %>
-            <%#= f.submit Create %>
-          <%# end %>
-          <p>購入者</p><%= @order.order_name %>
+          <label>注文番号</label>
+          <p><%= @order.id %></p>
+
+          <label>ステータス</label>
+          <%= form_for([:admin, @order]) do |f| %>
+            <%= f.select :order_status, Order.order_statuses.keys.to_a, {} %>
+
+            <%#= f.select :order_status, [["未発送",0], ["発送済み",1]] %>
+            <%= f.submit %>
+          <% end %>
+
+          <label>購入者</label>
+          <p><%= @order.order_name %></p>
         </div>
         <div class="col-md-6">
-          <p>購入日時</p><%= @order.created_at %>
-          <p>発送日時</p>
+          <label>購入日時</label>
+          <p><%= @order.created_at %></p>
+          <label>発送日時</label>
+          <p><% if @order.order_status == "発送済み" %>
+                <%= @order.updated_at %>
+              <% else %>
+                未発送
+              <% end %>
+          </p>
         </div>
       </div>
       <div>
@@ -29,20 +42,20 @@
               <th></th>
             </tr>
           </thead>
-         <!--  <tbody>
-            <% #@order_products.each do |p| %>
+          <tbody>
+            <% @order_products.each do |p| %>
             <tr>
-              <td><%#= p.product_id %></td>
-              <td><%#= p.product_id.product_name %></td>
-              <td><%#= p.order_quantity %></td>
-              <td><%#= p.product_id.price %></td>
-              <td><%#= p.order_quantity * p.product_id.price %></td>
+              <td><%= p.product_id %></td>
+              <td><%= p.product_id.product_name %></td>
+              <td><%= p.order_quantity %></td>
+              <td><%= p.product_id.price %></td>
+              <td><%= p.order_quantity * p.product_id.price %></td>
               <td><div>
-                <%#= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
+                <%= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
               </div></td>
             </tr>
-            <#% end %>
-          </tbody> -->
+            <% end %>
+          </tbody>
         </table>
       </div>
 

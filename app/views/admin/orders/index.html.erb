@@ -8,7 +8,7 @@
 					</div>
 					<div>
 						<h3 class="text-left">登録者数</h3>
-						<p><%= @users %></p>
+						<p class="admin_sitestatus_text"><%= @users %></p>
 					</div>
 				</div>
 			<div class="col-md-9">
@@ -30,11 +30,11 @@
 							<td><%= link_to order.id, admin_order_path(order.id) %></td>
 							<td><%= order.order_status %></td>
 							<td><%= order.order_address %></td>
-							<td><%#= order.user_id.first_name %></td>
+							<td><%= order.order_name %></td>
 							<td>
-								<%# order@order_products.each do |p| %>
-									<%#= p.product_id.product_name %>
-								<%# end %>
+								<% order.order_products.each do |p| %>
+									<%= p.product_id.product_name %>
+								<% end %>
 							</td>
 							<td><%= order.created_at %></td>
 						</tr>

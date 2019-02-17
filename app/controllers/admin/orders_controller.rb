@@ -11,10 +11,14 @@ class Admin::OrdersController < ApplicationController
 
   def show
      @order = Order.find(params[:id])
-     # @order_products = Order_products.where(order_id: @order.id)
+     @order_products = OrderProduct.where(order_id: @order.id)
   end
 
-  def create
+  def update
+    order = Order.find(params[:id])
+    if order.update(order_params)
+      redirect_to admin_order_path(order.id)
+    end
 
   end
 
@@ -25,5 +29,9 @@ class Admin::OrdersController < ApplicationController
     if current_user.id != 1
       redirect_to products_path
     end
+  end
+
+  def order_params
+    params.require(:order).permit(:order_status)
   end
 end
