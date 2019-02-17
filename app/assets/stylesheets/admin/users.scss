@@ -17,8 +17,12 @@
   padding-left: 10px;
 }
 
-.admin_user_edit_title {
-  margin-right: 10px;
+.admin_user_edit_title label {
+  margin: 0 10px 15px 0;
   width: 30%;
   text-align: right;
+}
+
+admin_user_edit_title .address {
+  
 }
