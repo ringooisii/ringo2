@@ -1,3 +1,59 @@
 
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="col-xs-3">
+  <div class="edit-box">
+	<table>
+		<thead>
+			
+			<tr>
+				<tr>
+					<th><%= @user.first_name %><%= @user.last_name %></th>
+				</tr>
+				<tr>
+					<th><%= @user.first_name_kana %><%= @user.last_name_kana %></th>
+				</tr>
+				<tr>
+					<th><%= @user.postcode %></th>
+				</tr>
+				<tr>
+					<th><%= @user.address %></th>
+				</tr>
+				<tr>
+					<th><%= @user.email %></th>
+				</tr>
+			</tr>
+			
+		</thead>
+	</table>
+	　<%= link_to "編集",edit_user_path %><br>
+  </div>
+<%= link_to "会員情報削除",user_path,method: :delete,"data-confirm" => "本当に消しますか？" %>
+</div>
+
+
+<div class="col-md-9">
+	<h2 class="text-left">注文中の商品</h2>
+	<table class="table">
+		<thead>
+			<tr>
+				<th>商品画像</th>
+				<th>商品名</th>
+				<th>数量</th>
+				<th>価格</th>
+				<th>小計</th>
+				<th>発送状況<br>ステータス</th>
+			</tr>
+		</thead>
+		<tbody>
+			
+			<tr>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+				<td></td>
+			</tr>
+			
+		</tbody>
+	</table>
+</div
