@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
   def show
   	@user = current_user
+    @orders = Order.all
+    
   end
 
   def edit

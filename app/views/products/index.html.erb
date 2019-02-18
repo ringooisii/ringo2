@@ -23,7 +23,7 @@
 				<div class="item-box">
 					<% @products.each do |product| %>
 						<div class="item">
-							<%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '150x150') %>
+							<%=attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '150x150') %>
 							<p>商品名:<%= product.product_name %></p>
 							<p>アーティスト名:<%= product.artist_name %></p>
 							<p>ジャンル:<%= product.genre %>円</p>

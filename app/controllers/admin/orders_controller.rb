@@ -4,6 +4,6 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(parame[:id])
+    @order = Order.all
   end
 end
