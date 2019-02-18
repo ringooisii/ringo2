@@ -25,6 +25,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def show
+
      @order = Order.find(params[:id])
      @order_products = OrderProduct.where(order_id: @order.id)
     #  @order_products.each do |product|
@@ -50,5 +51,6 @@ class Admin::OrdersController < ApplicationController
 
   def order_params
     params.require(:order).permit(:order_status)
+>>>>>>> master
   end
 end

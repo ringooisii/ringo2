@@ -35,6 +35,11 @@
 					<tbody>
 						<% @orders.each do |order| %>
 						<tr>
+							<td><%= order.id %></td>
+							<td><%= order.order_status %></td>
+							<td><%= order.order_address %></td>
+							<td></td>
+							<td>data</td>
 							<td><%= link_to order.id, admin_order_path(order.id) %></td>
 							<td><%= order.order_status %></td>
 							<td><%= order.order_address %></td>
