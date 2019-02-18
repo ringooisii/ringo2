@@ -1,0 +1,6 @@
+ja:
+  Order:
+    order_status:
+      undispatched: '未発送'
+      Shipped: '発送済み'
+

@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2019_02_11_044642) do
     t.integer "user_id"
     t.string "order_name", null: false
     t.string "order_address", null: false
-    t.integer "order_status", null: false
+    t.integer "order_status", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
