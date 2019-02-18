@@ -32,7 +32,6 @@
 						<%= f.label :ジャンル %>
 						<%= f.select :genre, Product.genres.keys.to_a %>
 					</p>
-
 					<div id="discs">
 						<%= f.fields_for :discs do |disc| %>
 					<%= render 'disc_fields', f: disc %>

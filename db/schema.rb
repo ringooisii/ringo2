@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(version: 2019_02_11_044642) do
     t.string "product_image_id"
     t.string "company"
     t.integer "stock_quantity"
-    t.boolean "deteled", default: false, null: false
+    t.boolean "deleted", default: false, null: false
     t.integer "admin_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
