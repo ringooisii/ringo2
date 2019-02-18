@@ -10,12 +10,13 @@ class Admin::UsersController < ApplicationController
 	def show
 		@user = User.find(params[:id])
 		@orders = Order.where(user_id: @user.id)
-    @orders.each do |order|
-      order_product = OrderProduct.where(order_id: order.id)
-      order_product.each do |p|
-        @p = Product.find(p.product_id)
-      end
-    end
+    # @order_product = OrderProduct.where(order_id: )
+  #   @orders.each do |order|
+  #     order_product = OrderProduct.where(order_id: order.id)
+  #     order_product.each do |p|
+  #       @p = Product.find(p.product_id)
+  #     end
+    # end
 	end
 
   def edit

@@ -44,13 +44,15 @@
             <% @order_products.each do |p| %>
             <tr>
               <td><%= p.product_id %></td>
-              <td><%= @p.product_name %></td>
+              <td><%= p.product.product_name %></td>
               <td><%= p.order_quantity %></td>
-              <td><%= @p.price %></td>
-              <td><%= p.order_quantity * @p.price %></td>
-              <td><div>
+              <td><%= p.product.price %></td>
+              <td><%= p.order_quantity * p.product.price %></td>
+              <td>
+                <div>
                 <%= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
-              </div></td>
+                </div>
+              </td>
             </tr>
             <% end %>
           </tbody>
