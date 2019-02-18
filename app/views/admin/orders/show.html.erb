@@ -1,22 +1,61 @@
-<div class="container">
+<div class="container admin_orderbox">
 	<div class="row">
-		<div class="col-md-10 col-md-offset-2">
-			<h2>注文詳細 一覧</h2>
+		<div class="col-md-10 col-md-offset-1">
+      <div class="admin_order_headline">
+			  <h2>注文詳細 一覧</h2>
+      </div>
 			<div class="row">
-        <div class="col-md-6">
-          <p>注文番号</p>
-          <p>ステータス</p>
-          <p>購入者</p>
+        <div class="col-md-5 col-md-offset-1">
+          <label>注文番号</label>
+          <p><%= @order.id %></p>
+          <label>ステータス</label>
+          <%= form_for([:admin, @order]) do |f| %>
+            <%= f.select :order_status, Order.order_statuses.keys.to_a, {} %>
+            <%= f.submit '変更' %>
+          <% end %>
+          <label>購入者</label>
+          <p><%= @order.order_name %></p>
         </div>
-        <div class="col-md-6">
-          <p>購入日時</p>
-          <p>発送日時</p>
+        <div class="col-md-5">
+          <label>購入日時</label>
+          <p><%= @order.created_at %></p>
+          <label>発送日時</label>
+          <p><% if @order.order_status == "発送済み" %>
+                <%= @order.updated_at %>
+              <% else %>
+                未発送
+              <% end %>
+          </p>
         </div>
       </div>
-      <div></div>
-
-
-
+      <div>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>商品 ID</th>
+              <th>商品名</th>
+              <th>個数</th>
+              <th>価格</th>
+              <th>合計</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @order_products.each do |p| %>
+            <tr>
+              <td><%= p.product_id %></td>
+              <td><%= @p.product_name %></td>
+              <td><%= p.order_quantity %></td>
+              <td><%= @p.price %></td>
+              <td><%= p.order_quantity * @p.price %></td>
+              <td><div>
+                <%= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
+              </div></td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
 		</div>
 	</div>
 </div>
