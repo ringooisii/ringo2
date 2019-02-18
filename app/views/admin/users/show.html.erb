@@ -29,7 +29,6 @@
 						<th>注文番号</th>
 						<th>配送状況</th>
 						<th>配送先</th>
-						<th>購入者</th>
 						<th>注文詳細</th>
 						<th>購入日時</th>
 					</tr>
@@ -40,8 +39,12 @@
 						<td><%= link_to order.id, admin_order_path(order.id) %></td>
 						<td><%= order.order_status %></td>
 						<td><%= order.order_address %></td>
-						<td><%= order.order_name %></td>
-						<td><%= @p.product_name %></td>
+						<!-- <td><%#= @p.product_name %></td> -->
+						<td>
+							<% order.order_products.each do |p| %>
+								<%= p.product.product_name %>
+							<% end %>
+						</td>
 						<td><%= order.created_at %></td>
 					</tr>
 					<% end %>
