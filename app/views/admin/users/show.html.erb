@@ -1,22 +1,28 @@
-<div class="container">
+<div class="container admin_userbox">
 	<div class="row">
 		<div class="col-md-3">
-			<h2 class="text-left">登録者 詳細情報</h2>
-			<table class="table">
-					<tr><th>登録者 ID：</th><td><%= @user.id %></td></tr>
-					<tr><th>苗字：</th><td><%= @user.first_name %></td></tr>
-					<tr><th>名前：</th><td><%= @user.last_name %></td></tr>
-					<tr><th>郵便番号：</th><td><%= @user.postcode %></td></tr>
-					<tr><th>住所：</th><td><%= @user.address %></td></tr>
-					<tr><th>メールアドレス：</th><td><%= @user.email %></td></tr>
-					<tr><th>電話番号：</th><td><%= @user.phone_number %></td></tr>
-			</table>
-			<div class="btn btn-default btn-block">
-				<%= link_to '編集', edit_admin_user_path(@user.id) %>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h2 class="panel-title">登録者 詳細情報</h2>
+				</div>
+				<div class="panel-body">
+					<table class="table">
+						<tr><th>登録者 ID：</th><td><%= @user.id %></td></tr>
+						<tr><th>苗字：</th><td><%= @user.first_name %></td></tr>
+						<tr><th>名前：</th><td><%= @user.last_name %></td></tr>
+						<tr><th>郵便番号：</th><td><%= @user.postcode %></td></tr>
+						<tr><th>住所：</th><td><%= @user.address %></td></tr>
+						<tr><th>メールアドレス：</th><td><%= @user.email %></td></tr>
+						<tr><th>電話番号：</th><td><%= @user.phone_number %></td></tr>
+					</table>
+				</div>
+				<%= link_to '編集', edit_admin_user_path(@user.id),class: "btn btn-default center-block" %>
 			</div>
 		</div>
 		<div class="col-md-9">
-			<h2 class="text-left">登録者 購入履歴</h2>
+			<div class="admin_user_headline">
+				<h2 class="text-left">購入履歴</h2>
+			</div>
 			<table class="table">
 				<thead>
 					<tr>
@@ -24,7 +30,6 @@
 						<th>配送状況</th>
 						<th>配送先</th>
 						<th>購入者</th>
-						<th></th>
 						<th>注文詳細</th>
 						<th>購入日時</th>
 					</tr>
@@ -32,18 +37,16 @@
 				<tbody>
 					<% @orders.each do |order| %>
 					<tr>
-						<td><%= order.id %></td>
+						<td><%= link_to order.id, admin_order_path(order.id) %></td>
 						<td><%= order.order_status %></td>
-						<td>
-							<% order.order_products.each do |p| %>
-								<%= p.product_id.product_name %>
-							<% end %>
-						</td>
+						<td><%= order.order_address %></td>
+						<td><%= order.order_name %></td>
+						<td><%= @p.product_name %></td>
 						<td><%= order.created_at %></td>
 					</tr>
 					<% end %>
 				</tbody>
 			</table>
-
+		</div>
 	</div>
 </div>
