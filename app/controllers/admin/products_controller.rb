@@ -1,4 +1,7 @@
 class Admin::ProductsController < ApplicationController
+before_action :authenticate_user!
+before_action :only_admin_user
+PER = 5
 	def new
 		@product = Product.new
 		#@disc = @product.discs.build
@@ -6,7 +9,8 @@ class Admin::ProductsController < ApplicationController
 	end
 
 	def index
-		@product = Product.all
+		#@product = Product.all
+		@product = Product.page(params[:page]).per(PER)
 	end
 
 	def create
@@ -38,7 +42,7 @@ class Admin::ProductsController < ApplicationController
 	def update
 			@product = Product.find(params[:id])
 		if @product.update(product_params)
-			flash[:notice] = "successfully"
+			#flash[:notice] = "successfully"
 			redirect_to admin_products_path(@product)
 		else
 			flash[:notice] = "error"
@@ -51,6 +55,12 @@ class Admin::ProductsController < ApplicationController
 			params.require(:product).permit(:genre, :product_name, :price, :artist_name, :product_image, :company, :stock_quantity,
 				discs_attributes: [:id, :disc_name, :disc_number, :_destroy,
 				songs_attributes: [:id, :title, :song_number, :_destroy]])
+		end
+
+		def only_admin_user
+			if current_user.id != 1
+				redirect_to products_path
+			end
 		end
 end
 
