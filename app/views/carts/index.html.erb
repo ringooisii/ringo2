@@ -1,3 +1,7 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+
 <% @carts.each do |cart| %>
 <p><%= attachment_image_tag(cart.product, :product_image, fallback: "noimage.png",size: '150x150') %></p>
 <p>商品名: <%= cart.product.product_name %></p>
@@ -11,5 +15,6 @@
 <p>小計: <%= cart.product.price * cart.quantity %></p>
 <p><%= link_to "削除", cart_path(cart.id), method: :delete %>
 <% end %>
-
-
+		</div>
+	</div>
+</div>

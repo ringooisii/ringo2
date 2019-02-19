@@ -22,8 +22,8 @@ ActiveRecord::Schema.define(version: 2019_02_18_073922) do
 
   create_table "discs", force: :cascade do |t|
     t.integer "product_id"
-    t.string "disc_name"
-    t.integer "disc_number"
+    t.string "disc_name", null: false
+    t.integer "disc_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -43,19 +43,20 @@ ActiveRecord::Schema.define(version: 2019_02_18_073922) do
     t.integer "user_id"
     t.string "order_name", null: false
     t.string "order_address", null: false
-    t.integer "order_status", default: 0, null: false
+    t.integer "order_status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.integer "genre", limit: 1, default: 0, null: false
-    t.string "product_name"
-    t.integer "price"
-    t.string "artist_name"
+    t.integer "genre", null: false
+    t.string "product_name", null: false
+    t.integer "price", null: false
+    t.string "artist_name", null: false
     t.string "product_image_id"
-    t.string "company"
-    t.integer "stock_quantity"
+    t.string "company", null: false
+    t.integer "stock_quantity", null: false
+    t.boolean "deteled", default: false, null: false
     t.integer "admin_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -74,8 +75,8 @@ ActiveRecord::Schema.define(version: 2019_02_18_073922) do
 
   create_table "songs", force: :cascade do |t|
     t.integer "disc_id"
-    t.string "title"
-    t.integer "song_number"
+    t.string "title", null: false
+    t.integer "song_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -98,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_073922) do
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
+    t.boolean "deteled", default: false, null: false
     t.integer "admin_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
