@@ -77,3 +77,5 @@ gem "cocoon"
 gem 'kaminari'
 
 gem 'ransack'
+
+gem 'paranoia'
