@@ -2,31 +2,35 @@
 
 <table class="table">
 	<thead>
-		<tr>
 			<th>購入予定商品</th>
-		</tr>
+			<th>数量</th>
+			<th>価格</th>
+			<th>小計</th>
 	</thead>
 	<tbody>
 		 <% current_user.carts.each do |cart| %>
 		<tr>
-			<td></td>
 			<td><%= cart.product.product_name %></td>
 			<td><%= cart.quantity %></td>
 			<td><%= cart.product.price %></td>
 			<td><%= cart.product.price * cart.quantity %>  </td>
-			<td></td>
 		</tr>
 		<% end %>
 	</tbody>
 
 </table>
+<table class="table">
+	<thead>
+		<th>配送先名</th>
+		<th>配送先郵便番号</th>
+		<th>配送先住所</th>
+	</thead>
+	<% current_user.shippings.each do |shipping| %>
+	<tr>
+		<td><%= shipping.shipping_name %></td>
+		<td><%= shipping.shipping_postcode %></td>
+		<td><%= shipping.shipping_address %></td>
+	</tr>
+	<% end %>
 
-<% current_user.shippings.each do |shipping| %>
-
-<tr>
-	<td></td>
-	<td><%= shipping.shipping_name %></td>
-	<td><%= shipping.shipping_postcode %></td>
-	<td><%= shipping.shipping_address %></td>
-</tr>
-<% end %>
+</table>
