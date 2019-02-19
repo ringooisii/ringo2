@@ -77,3 +77,7 @@ gem "cocoon"
 gem 'kaminari'
 
 gem 'ransack'
+
+gem 'omniauth'
+gem 'omniauth-facebook'
+
