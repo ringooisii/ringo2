@@ -24,7 +24,6 @@ class ProductsController < ApplicationController
       @products = Product.all
       @user = current_user
       render "index"
-      
     end
     end
 
@@ -39,7 +38,7 @@ class ProductsController < ApplicationController
     private
   def correct_user
       product = Product.find(params[:id])
-      
+
     end
   def product_params
     params.require(:product).permit(:title, :opinion, :image)
