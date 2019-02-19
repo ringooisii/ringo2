@@ -7,16 +7,14 @@
 		</tr>
 	</thead>
 	<tbody>
-		　<% @orders.each do |order| %>
-		　<% if order.order_status == 0 %>
+		 <% current_user.carts.each do |cart| %>
 		<tr>
 			<td></td>
-			<td><%= order.order_name %></td>
-			<td><%= order.order_address %></td>
+			<td><%= cart.product.product_name %></td>
+			<td><%= cart.quantity %></td>
+			<td><%= cart.product.price %></td>
+			<td><%= cart.product.price * cart.quantity %>  </td>
 			<td></td>
-			<td></td>
-			<td><%= order.order_status %></td>
-			<% end %>
 		</tr>
 		<% end %>
 	</tbody>

@@ -48,7 +48,7 @@
 			</thead>
 			<tbody>
 				<% @orders.each do |order| %>
-				　<% if order.order_status == 0 %>
+				　<% if order.order_status == "未発送" %>
 					<tr>
 						<td></td>
 						<td><%= order.order_name %></td>
@@ -79,7 +79,7 @@
 			<tbody>
 			  
 				<% @orders.each do |order| %>
-				  <% if order.order_status != 0 %>
+				  <% if order.order_status !="未発送"   %>
 				  <tr>
 					<td></td>
 					<td><%= order.order_name %></td>
