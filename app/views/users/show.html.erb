@@ -26,7 +26,7 @@
 		</thead>
 	</table>
 
-	　<%= link_to "編集",edit_user_path %><br>
+	<%= link_to "編集",edit_user_path %><br>
 	<%= link_to "退会はこちらから",user_path,method: :delete,"data-confirm" => "本当に退会しますか？" %>
   </div>
 </div>
@@ -47,8 +47,8 @@
 				</tr>
 			</thead>
 			<tbody>
-				<% @orders.each do |order| %>
-				　<% if order.order_status == "未発送" %>
+				<% current_user.orders.each do |order| %>
+				<% if order.order_status == "未発送" %>
 					<tr>
 						<td></td>
 						<td><%= order.order_name %></td>
@@ -60,7 +60,6 @@
 					</tr>
 				<% end %>
 			</tbody>
-
 		</table>
 	</div>
 	<div class="order-right">

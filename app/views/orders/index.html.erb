@@ -10,27 +10,24 @@
 	<tbody>
 		 <% current_user.carts.each do |cart| %>
 		<tr>
-			<td><%= cart.product.product_name %></td>
+			<td><%= cart.product.product_image_id %></td>
 			<td><%= cart.quantity %></td>
 			<td><%= cart.product.price %></td>
 			<td><%= cart.product.price * cart.quantity %>  </td>
 		</tr>
 		<% end %>
 	</tbody>
-	
 </table>
 <table class="table">
-	<thead>
-		<th>配送先名</th>
-		<th>配送先郵便番号</th>
-		<th>配送先住所</th>
-	</thead>
-	<% current_user.shippings.each do |shipping| %>
-	<tr>
-		<td><%= shipping.shipping_name %></td>
-		<td><%= shipping.shipping_postcode %></td>
-		<td><%= shipping.shipping_address %></td>
-	</tr>
-	<% end %>
+  <thead>
+    <%= form_for(@order) do |f| %>
+      <% current_user.shippings.each do |shipping| %>
+        <tr>
+         <td><label><%= f.radio_button :user_id, shipping.id %><%= shipping.shipping_address %><%= shipping.shipping_name %></label><td>
+        <tr>
 
+      <% end %>
+	  <%= f.submit "注文確定" %>
+	<% end %>
+  </thead>
 </table>

@@ -54,18 +54,9 @@ ActiveRecord::Schema.define(version: 2019_02_18_073922) do
     t.integer "price"
     t.string "artist_name"
     t.string "product_image_id"
-
     t.string "company"
     t.integer "stock_quantity"
-
-    t.string "company", null: false
-    t.integer "stock_quantity", null: false
-
     t.boolean "deteled", default: false, null: false
-
-    t.string "company"
-    t.integer "stock_quantity"
-
     t.integer "admin_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -108,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_02_18_073922) do
     t.string "postcode", null: false
     t.string "address", null: false
     t.string "phone_number", null: false
+    t.boolean "deteled", default: false, null: false
     t.integer "admin_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
