@@ -1,7 +1,7 @@
 <div class="container">
 		<div class="row">
 			<button class="col-md-offset-10 btn btn-link" type="button">
-				<a href= "http://localhost:3000/admin/products/new">新規登録</a>
+				<%= link_to "商品登録", new_admin_product_path, data: {"turbolinks" => false} %>
 			</button>
 		</div>
 	<div class="row">
@@ -33,6 +33,7 @@
 			</tr>
 			</tbody>
 			</table>
+				<%= paginate @product %>
 		</div>
 	</div>
 </div>
