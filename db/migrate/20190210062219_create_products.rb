@@ -8,7 +8,7 @@ class CreateProducts < ActiveRecord::Migration[5.2]
       t.string   :product_image_id
       t.string   :company#, null: false
       t.integer  :stock_quantity#, null: false
-      t.boolean  :deleted, null: false, default: false
+      #t.boolean  :deleted_at, null: false, default: false
       t.integer  :admin_status, default: false
       t.timestamps
     end

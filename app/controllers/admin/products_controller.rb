@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
 before_action :authenticate_user!
 before_action :only_admin_user
-
+PER = 5
 	def new
 		@product = Product.new
 		#@disc = @product.discs.build
@@ -9,8 +9,8 @@ before_action :only_admin_user
 	end
 
 	def index
-		@product = Product.all
-		#@product = Product.active
+		#@product = Product.all
+		@product = Product.page(params[:page]).per(PER)
 	end
 
 	def create
@@ -31,8 +31,7 @@ before_action :only_admin_user
 
 	def destroy
 		@product = Product.find(params[:id])
-		@product.deleted = true
-		@product.save
+		@product.destroy
 		redirect_to admin_products_path
 	end
 
@@ -43,7 +42,7 @@ before_action :only_admin_user
 	def update
 			@product = Product.find(params[:id])
 		if @product.update(product_params)
-			flash[:notice] = "successfully"
+			#flash[:notice] = "successfully"
 			redirect_to admin_products_path(@product)
 		else
 			flash[:notice] = "error"
