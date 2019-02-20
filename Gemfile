@@ -83,3 +83,5 @@ gem 'ransack'
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+
+gem 'paranoia'
