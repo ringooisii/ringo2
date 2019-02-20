@@ -2,6 +2,7 @@ class Product < ApplicationRecord
 	attachment :product_image
 	has_many :discs, inverse_of: :product
 	has_many :order_products
+	has_many :orders, through: :order_products
 	has_many :users, through: :carts
   	has_many :carts
 
