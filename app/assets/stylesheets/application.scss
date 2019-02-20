@@ -27,13 +27,24 @@
     text-align: center;
   }
 
-.user-new {
-  margin-left: 500px;
+  .sign-in-box label {
+    padding-top: 10px;
   }
 
+  .sign-in-box_main {
+    margin-bottom: 15px;
+  }
 
-  .sign-in-box {
+  .sign-up-box {
+  margin-left: 10px;
+  }
+
+  .sign-up-box_text {
     text-align: center;
+  }
+  .sign-up-box_btn {
+    text-align: center;
+    margin-top: 15px;
   }
 
   .user-edit {
