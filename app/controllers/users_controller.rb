@@ -13,7 +13,7 @@ class UsersController < ApplicationController
      @user =current_user
   if @user.update(user_params)
     flash[:notice] = "User was successfully updated."
-    redirect_to root_path
+    redirect_to user_path
 
   else
     render :edit
