@@ -2,7 +2,7 @@ class OrdersController < ApplicationController
   def index
     @order = Order.new
   end
-
+  
   def create
   	shipping = Shipping.find(params[:order][:user_id])#配送先の指定、本来は実体のないカラムを作るべき
   	@order = Order.new(user_id: shipping.user_id, order_name: shipping.shipping_name, order_address: shipping.shipping_address)#注文テーブルの作成
