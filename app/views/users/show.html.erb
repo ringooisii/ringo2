@@ -50,7 +50,8 @@
 				<% current_user.orders.each do |order| %>
 				<% if order.order_status == "未発送" %>
 					<tr>
-						<td><%= attachment_image_tag(order.order_product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+						<td></td>
+						<!-- <td><%#= attachment_image_tag(order.order_product, :product_image, fallback: "noimage.png",size: '100x100') %></td> -->
 						<td><%= order.order_name %></td>
 						<td></td>
 						<td></td>
