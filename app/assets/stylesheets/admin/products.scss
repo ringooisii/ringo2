@@ -1,3 +1,25 @@
 // Place all the styles related to the admin/products controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.product-new{
+	margin-bottom: 20px;
+}
+
+.disc-add{
+	margin-bottom: 10px;
+}
+
+.edit-new{
+	margin-bottom: 20px;
+	margin-left: 43%;
+}
+
+dd{
+	margin-bottom: 10px;
+}
+
+.admin_product_image {
+  background-image: image-url("8bit_mono.jpeg");
+  padding: 10px 0;
+}

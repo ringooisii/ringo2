@@ -32,12 +32,12 @@
 						<%= f.label :ジャンル %>
 						<%= f.select :genre, Product.genres.keys.to_a %>
 					</p>
-
 					<div id="discs">
 						<%= f.fields_for :discs do |disc| %>
 					<%= render 'disc_fields', f: disc %>
 					<% end %>
-					<div id="links">
+					</div>
+					<div class="disc-add" id="links">
 						<%= link_to_add_association 'ディスク追加',f, :discs %>
 					</div>
 					<p>
@@ -47,9 +47,10 @@
 				</div>
 			</div>
 		</div>
-			<div class="actions row">
-				<%= f.submit :新規商品登録,class: "btn btn-primary col-md-offset-2 col-md-8" %>
+			<div class="actions row product-new">
+				<%= f.submit :新規商品登録,class: "btn btn-primary col-md-offset-4 col-md-4" %>
 					<% end %>
+			</div>
 
 
 	</div>
