@@ -8,13 +8,24 @@
 		<div class= "col-md-2">
 			<p class="title">検索</p>
 			<%= search_form_for(@search, method: :get)  do |f| %> <!--検索機能-->
-				<%= f.label :product_name_cont, "名前" %>
-				<%= f.text_field :product_name_cont,placeholder: "部分一致"%>
-				<%= f.label :price_lt, '価格' %>
-				<%= f.number_field :price_lt %>
+				<%= f.label :product_name_cont, "商品名",class: "label-top" %>
+				<%= f.text_field :product_name_cont %>
+				<%= f.label :artist_name_cont, "アーティスト名",class: "label-top" %>
+				<%= f.text_field :artist_name_cont %>
+				<%= f.label :price_lt, '価格',class: "label-top" %>
+				<%= f.number_field :price_lt,placeholder: "****円以下" %>
+				<%= f.label :genre, 'ジャンル',class: "label-top" %>
+				<br>
+				<%= f.select :genre_cont, Product.genres,{include_blank: "指定なし"} %>
+				<br>
+				<div class="form-group">
+				<br>
 				<%= f.submit "検索" %>
+				<%= link_to '検索条件のクリア', request.path %>
+				</div>
 			<% end %>
 		</div>
+
 		<div class="col-md-10">
 			<p class="title">CD</p>
 				<div class="item-box">
@@ -22,11 +33,11 @@
 						<div class="item">
 							<%= link_to product_path(product.id),data: {"turbolinks" => false} do %>
 								<%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '150x150') %>
-								<p>商品名: <%= product.product_name %></p>
+								<p class="puro-size">商品名: <%= product.product_name %></p>
 							<% end %>
-								<p>アーティスト名:<%= product.artist_name %></p>
-								<p>ジャンル:<%= product.genre %>円</p>
-								<p>価格:<%= product.price %>円</p>
+								<p class="puro-size">価格: <%= product.price %>円</p>
+								<p class="puro-size">ジャンル: <%= product.genre %></p>
+								<p class="puro-size">アーティスト名: <%= product.artist_name %></p>
 						</div>
 					<% end %>
 					<%= paginate @products %>
