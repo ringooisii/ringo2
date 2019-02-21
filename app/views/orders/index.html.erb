@@ -1,3 +1,4 @@
+
 <h1>注文確認</h1>
 
 <table class="table">
@@ -17,21 +18,27 @@
 			<td><%= cart.quantity %></td>
 			<td><%= cart.product.price %>円</td>
 			<td><%= cart.product.price * cart.quantity %>円</td>
+			<td><% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %></td>
 		</tr>
-		<% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %>
 		<% end %>
 	</tbody>
 </table>
 <p><%= @total%></p>
 <table class="table">
   <thead>
-    <%= form_for(@order) do |f| %>
-      <% current_user.shippings.each do |shipping| %>
-        <tr>
-         <td><label><%= f.radio_button :user_id, shipping.id %><%= shipping.shipping_address %>  <%= shipping.shipping_name %></label><td>
-        <tr>
-      <% end %>
-	  <%= f.submit "注文確定" %>
-	<% end %>
+
   </thead>
 </table>
+  <%= form_for(@order) do |f| %>
+      <% current_user.shippings.each do |shipping| %>
+        <div class="user-shipping-address">
+         <%= f.radio_button :user_id, shipping.id %><%= shipping.shipping_address %>  <%= shipping.shipping_name %>
+        </div>
+      <% end %>
+
+      <br>
+	    <%= f.submit "注文確定" %>
+	<% end %>
+
+
+<%= link_to "配送先住所登録",shippings_path %>
