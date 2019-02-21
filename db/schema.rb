@@ -31,19 +31,19 @@ ActiveRecord::Schema.define(version: 2019_02_19_025411) do
   create_table "order_products", force: :cascade do |t|
     t.integer "order_id"
     t.integer "product_id"
-    t.integer "order_quantity", null: false
-    t.integer "order_price", null: false
+    t.integer "order_quantity"
+    t.integer "order_price"
     t.string "order_product_image_id"
-    t.string "order_name", null: false
+    t.string "order_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "orders", force: :cascade do |t|
     t.integer "user_id"
-    t.string "order_name", null: false
-    t.string "order_address", null: false
-    t.integer "order_status", default: 0, null: false
+    t.string "order_name"
+    t.string "order_address"
+    t.integer "order_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,9 +65,9 @@ ActiveRecord::Schema.define(version: 2019_02_19_025411) do
 
   create_table "shippings", force: :cascade do |t|
     t.integer "user_id"
-    t.string "shipping_address", null: false
-    t.string "shipping_postcode", null: false
-    t.string "shipping_name", null: false
+    t.string "shipping_address"
+    t.string "shipping_postcode"
+    t.string "shipping_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
