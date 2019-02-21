@@ -9,24 +9,24 @@
 				<div class="panel-body">
 					<%= form_for ([:admin,@product]) do |f| %>
 					<p>
-						<%= f.label :アーティスト名 %>
-						<%= f.text_field :artist_name, class: "form-control" %>
+						<%= f.label :シングル名 %>
+						<%= f.text_field :product_name,placeholder: "シングル名", class: "form-control" %>
 					</p>
 					<p>
-						<%= f.label :シングル名 %>
-						<%= f.text_field :product_name, class: "form-control" %>
+						<%= f.label :アーティスト名 %>
+						<%= f.text_field :artist_name,placeholder: "アーティスト名", class: "form-control" %>
 					</p>
 					<p>
 						<%= f.label :サムネイル %>
-						<%= f.file_field :product_image, class: "form-control" %>
+						<%= f.file_field :product_image,placeholder: "サムネイル", class: "form-control" %>
 					</p>
 					<p>
 						<%= f.label :価格 %>
-						<%= f.text_field :price, class: "form-control" %>
+						<%= f.text_field :price,placeholder: "価格", class: "form-control" %>
 					</p>
 					<p>
 						<%= f.label :レーベル %>
-						<%= f.text_field :company, class: "form-control" %>
+						<%= f.text_field :company,placeholder: "レーベル", class: "form-control" %>
 					</p>
 					<p>
 						<%= f.label :ジャンル %>
@@ -42,7 +42,7 @@
 					</div>
 					<p>
 						<%= f.label :在庫 %>
-						<%= f.text_field :stock_quantity %>
+						<%= f.text_field :stock_quantity,placeholder: "在庫" %>
 					</p>
 				</div>
 			</div>
