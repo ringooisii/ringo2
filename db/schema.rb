@@ -91,13 +91,13 @@ ActiveRecord::Schema.define(version: 2019_02_19_025411) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "last_name"
-    t.string "first_name"
-    t.string "last_name_kana"
-    t.string "first_name_kana"
-    t.string "postcode"
-    t.string "address"
-    t.string "phone_number"
+    t.string "last_name", null: false
+    t.string "first_name", null: false
+    t.string "last_name_kana", null: false
+    t.string "first_name_kana", null: false
+    t.string "postcode", null: false
+    t.string "address", null: false
+    t.string "phone_number", null: false
     t.integer "admin_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

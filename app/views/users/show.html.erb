@@ -43,20 +43,24 @@
 					<th>数量</th>
 					<th>価格</th>
 					<th>小計</th>
-					<th>発送状況<br>ステータス</th>
+					<th>発送状況</th>
 				</tr>
 			</thead>
 			<tbody>
+				<!-- ログインしているuserの商品情報を表示 -->
 				<% current_user.orders.each do |order| %>
 				<% if order.order_status == "未発送" %>
 					<tr>
-						<td></td>
-						<!-- <td><%#= attachment_image_tag(order.order_product, :product_image, fallback: "noimage.png",size: '100x100') %></td> -->
-						<td><%= order.order_name %></td>
-						<td></td>
-						<td></td>
-						<td></td>
-						<td></td>
+					<!-- 　注文履歴の表示 -->
+					  <% order.order_products.each do |order_product|%>
+						<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+						<td><%= order_product.order_name %></td>
+						<td><%= order_product.order_quantity %></td>
+						<td><%= order_product.order_price %></td>
+						<td><%= order_product.order_price * order_product.order_quantity %></td>
+						<td><%= order.order_status %></td>
+                      <% end %>
+
 					  <% end %>
 					</tr>
 				<% end %>
@@ -77,18 +81,22 @@
 				</tr>
 			</thead>
 			<tbody>
-			  
-				<% @orders.each do |order| %>
-				  <% if order.order_status !="未発送"   %>
-				  <tr>
-					<td></td>
-					<td><%= order.order_name %></td>
-					<td><%= order.order_address %></td>
-					<td></td>
-					<td></td>
-					<td><%= order.order_status %></td>
-				  </tr>
-				  <% end %>
+			    <!-- ログインしているuserの商品情報を表示 -->
+				<% current_user.orders.each do |order| %>
+				<% if order.order_status != "未発送" %>
+					<tr>
+					<!-- 　注文履歴の表示 -->
+					  <% order.order_products.each do |order_product|%>
+						<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+						<td><%= order_product.order_name %></td>
+						<td><%= order_product.order_quantity %></td>
+						<td><%= order_product.order_price %></td>
+						<td><%= order_product.order_price * order_product.order_quantity %></td>
+						<td><%= order.order_status %></td>
+                      <% end %>
+
+					  <% end %>
+					</tr>
 				<% end %>
 			</tbody>
 
