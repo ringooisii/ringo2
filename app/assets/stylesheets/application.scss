@@ -18,6 +18,31 @@
 
 
 
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+  .navi_list {
+  padding-top: 20px;
+  background-color: white;
+  position: relative
+  }
+
+  .navi_list_icon {
+  position: absolute;
+  bottom: 3px;
+  right: 0;
+  }
+
+  .navi_list_icon li {
+  border-rigth: red 1px solid;
+  display: inline-block;
+  }
+
+
+
   .update-actions {
     padding-top: 15px;
     padding-bottom: 15px;
@@ -52,7 +77,7 @@
   }
 
  .edit-box {
-   text-align: center;
+    text-align: center;
     margin: 2em 0;
     font-weight: bold;
     color: #6091d3;/*文字色*/
@@ -73,8 +98,27 @@
 
 .footer {
   background-color: #c0c0c0;
-  padding: 10px 0;
+  padding: 30px 0 50px 0;
 }
+
+.company_list {
+  list-style: none;
+  display: inline-block;
+  width: 70%;
+}
+
+.footer li {
+　text-colour:#808080;
+  margin-right: 20px;
+  display: inline-block;
+}
+
+.company_name {
+  display: inline-block;
+  text-align: right;
+  width: 20%;
+}
+
 
 
 

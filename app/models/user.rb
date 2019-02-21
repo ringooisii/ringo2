@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable, omniauth_providers: %i[facebook]
+         :omniauthable, omniauth_providers: [:facebook]
 
   has_many :products, through: :carts
   has_many :carts
@@ -12,7 +12,7 @@ class User < ApplicationRecord
   has_many :shippings
 
 
-  with_options unless: :facebook do
+  with_options unless: :provider do
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :first_name_kana,presence: true
@@ -21,13 +21,6 @@ class User < ApplicationRecord
     validates :address, presence: true
   end
 
-
-
-
-# インスタンスメソッド
-  def full_name
-    ["first_name", "last_name"].join("")
-  end
 
 # //クラスメソッド
   def self.from_omniauth(auth)
