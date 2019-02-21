@@ -22,7 +22,7 @@
 					</p>
 					<p>
 						<%= f.label :価格 %>
-						<%= f.text_field :price,placeholder: "価格", class: "form-control" %>
+						<%= f.number_field :price,placeholder: "価格", class: "form-control" %>
 					</p>
 					<p>
 						<%= f.label :レーベル %>
@@ -42,7 +42,7 @@
 					</div>
 					<p>
 						<%= f.label :在庫 %>
-						<%= f.text_field :stock_quantity,placeholder: "在庫" %>
+						<%= f.number_field :stock_quantity,placeholder: "在庫" %>
 					</p>
 				</div>
 			</div>
