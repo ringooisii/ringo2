@@ -1,54 +1,54 @@
 <div class="container">
 	<div class="row">
-
-				<div class="col-md-5 text-right">
-				<%= attachment_image_tag(@product, :product_image, fallback: "noimage.png",size: '275x275') %>
-				</div>
-				<div class="col-md-7">
-					<table class="table table-bordered"style="table-layout: fixed;">
-						<tr>
-							<th class="text-right" style="width:20%">商品名 :</th>
-							<th><%= @product.product_name %></th>
-						</tr>
-						<tr>
-							<th class="text-right" style="width:20%">アーティスト名 :</th>
-							<th><%= @product.artist_name %></th>
-						</tr>
-						<tr>
-							<th class="text-right" style="width:20%">価格 :</th>
-							<th><%= @product.price %>円</th>
-						</tr>
-						<tr>
-							<th class="text-right" style="width:20%">ジャンル :</th>
-							<th><%= @product.genre %></th>
-						</tr>
-						<tr>
-							<th class="text-right" style="width:20%">レーベル :</th>
-							<th><%= @product.company %></th>
-						</tr>
-						<tr>
-							<th class="text-right" style="width:20%">在庫数 :</th>
-							<th><%= @product.stock_quantity %>枚</th>
-						</tr>
-						<tr>
-							<%= form_for @cart do |f| %>
-							<th class="text-right" style="width:20%">数量 <%= f. select :quantity, 1...10 %> :</th>
-							<th>
-								<%= f.hidden_field :product_id, :value => params[:id] %>
-								<%= f.submit 'カートに入れる', class: "btn btn-info glyphicon "%>
-								</th>
-							<% end %>
-						</tr>
-					</table>
-
-
-				</div>
-
-
+		<div class="col-md-5 text-right">
+			<%= attachment_image_tag(@product, :product_image, fallback: "noimage.png",size: '275x275') %>
+		</div>
+		<div class="col-md-7">
+			<table class="table table-bordered"style="table-layout: fixed;">
+				<tr>
+					<th class="text-right" style="width:20%">商品名 :</th>
+					<th><%= @product.product_name %></th>
+				</tr>
+				<tr>
+					<th class="text-right" style="width:20%">アーティスト名 :</th>
+					<th><%= @product.artist_name %></th>
+				</tr>
+				<tr>
+					<th class="text-right" style="width:20%">価格 :</th>
+					<th><%= @product.price %>円</th>
+				</tr>
+				<tr>
+					<th class="text-right" style="width:20%">ジャンル :</th>
+					<th><%= @product.genre %></th>
+				</tr>
+				<tr>
+					<th class="text-right" style="width:20%">レーベル :</th>
+					<th><%= @product.company %></th>
+				</tr>
+				<tr>
+					<th class="text-right" style="width:20%">在庫数 :</th>
+					<th><%= @product.stock_quantity %>枚</th>
+				</tr>
+				<tr>
+					<%= form_for @cart do |f| %>
+						<th class="text-right" style="width:20%">数量 <%= f. select :quantity, 1...@product.stock_quantity %> :</th>
+						<th><%= f.hidden_field :product_id, :value => params[:id] %>
+						<%= f.submit 'カートに入れる', class: "btn btn-info glyphicon "%></th>
+					<% end %>
+				</tr>
+			</table>
+		</div>
 	</div>
-
-				<div class="song-box">
-					<p>song</p>
-				</div>
-
+	<div class="song-box">
+		<% @product.discs.each do |disc| %>
+			<dt>ディスク</dt>
+			<dd><%= disc.disc_number %></dd>
+			<dd><%= disc.disc_name %></dd>
+				<% disc.songs.each do |song| %>
+					<dt>曲名</dt>
+					<dd><%= song.song_number %></dd>
+					<dd><%= song.title %></dd>
+				<% end %>
+		<% end %>
+	</div>
 </div>

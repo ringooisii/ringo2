@@ -1,47 +1,45 @@
 <div class="container">
 	<div class="row">
-		<div class="cart-layout">
-		<div class="col-md-10 col-md-offset-1">
-			<table class="table align-middle table-bordered">
-				<thead>
-					<tr>
-						<th class="align-middle" style="width:120px">商品画像</th>
-						<th class="align-middle" style="width:250px">商品名</th>
-						<th class="align-middle" style="width:100px">商品価格</th>
-						<th class="align-middle" style="width:150px">数量</th>
-						<th class="align-middle" style="width:100px">小計</th>
-						<th class="align-middle" style="width:60px">------</th>
-					</tr>
-				</thead>
-				<tbody>
-					<% @carts.each do |cart| %>
-					<tr>
-						<td class="align-middle"><%= attachment_image_tag(cart.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-						<td class="align-middle"><%= cart.product.product_name %></td>
-						<td class="align-middle"><%= number_with_delimiter(cart.product.price) %>円</td>
-						<%= form_for cart do |f| %>
-						<td class="align-middle"><%= f. select :quantity, 1...10 %>
-							<%= f.submit "更新する",class: "btn btn-default btn-xs btn-size" %>
-						</td>
+			<div class="col-md-10 col-md-offset-1">
+				<div class="cart-title">
+				<p class="bottom-line"><strong>ショッピングカート一覧</strong></p>
+				</div>
+				<table class="table align-middle table-bordered">
+					<thead>
+						<tr>
+							<th class="align-middle" style="width:120px">商品画像</th>
+							<th class="align-middle" style="width:250px">商品名</th>
+							<th class="align-middle" style="width:100px">商品価格</th>
+							<th class="align-middle" style="width:150px">数量</th>
+							<th class="align-middle" style="width:100px">小計</th>
+							<th class="align-middle" style="width:60px">------</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% @carts.each do |cart| %>
+							<tr>
+								<td class="align-middle"><%= attachment_image_tag(cart.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+								<td class="align-middle"><%= cart.product.product_name %></td>
+								<td class="align-middle"><%= number_with_delimiter(cart.product.price) %>円</td>
+							<%= form_for cart do |f| %>
+								<td class="align-middle"><%= f. select :quantity, 1...cart.product.stock_quantity %>
+								<%= f.submit "更新する",class: "btn btn-default btn-xs btn-size" %></td>
+							<% end %>
+								<td class="align-middle"><%= number_with_delimiter(cart.product.price * cart.quantity) %>円</td>
+								<td class="align-middle"><%= link_to "削除", cart_path(cart.id), method: :delete %></td>
+								<% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %>
+							</tr>
 						<% end %>
-						<td class="align-middle"><%= number_with_delimiter(cart.product.price * cart.quantity) %>円</td>
-						<td class="align-middle"><%= link_to "削除", cart_path(cart.id), method: :delete %></td>
-						<% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %>
-					</tr>
-					<% end %>
-				</tbody>
-			</table>
-
-			<div class="total-right">
-		<span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
-			</div>
-			<div class="actions row">
+					</tbody>
+				</table>
+				<div class="total-right">
+				<span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
+				</div>
+				<div class="actions row">
+					<br>
+					<%= link_to "注文確認画面へ", orders_path, class: "btn btn-default col-md-offset-3 col-md-6" %>
+				</div>
 				<br>
-				<%= link_to "配送先登録へ", shippings_path, class: "btn btn-default col-md-offset-3 col-md-6" %>
 			</div>
-			<br>
-
-		</div>
-		</div>
 	</div>
 </div>
