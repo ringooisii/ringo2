@@ -3,7 +3,7 @@
     <%= f.label :No %>
     <%= f.select :disc_number, 1...6 %>
     <%= f.label :ディスク名 %>
-    <%= f.text_field :disc_name %>
+    <%= f.text_field :disc_name,placeholder: "ディスク名" %>
     <%= link_to_remove_association "ディスク削除", f %>
   </div>
 

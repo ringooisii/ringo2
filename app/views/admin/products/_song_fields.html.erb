@@ -3,7 +3,7 @@
 		<%= f.label :No %>
 		<%= f.select :song_number, 1...21 %>
 		<%= f.label :曲名 %>
-		<%= f.text_field :title %>
+		<%= f.text_field :title,placeholder: "曲名" %>
 		<%= link_to_remove_association "曲削除", f %>
 	</div>
 </div>

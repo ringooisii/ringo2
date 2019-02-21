@@ -3,7 +3,6 @@ class UsersController < ApplicationController
   def show
   	@user = current_user
     @orders = Order.page(params[:page]).per(PER)
-    
   end
 
   def edit
