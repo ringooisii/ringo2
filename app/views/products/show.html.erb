@@ -31,7 +31,7 @@
 				</tr>
 				<tr>
 					<%= form_for @cart do |f| %>
-						<th class="text-right" style="width:20%">数量 <%= f. select :quantity, 1...10 %> :</th>
+						<th class="text-right" style="width:20%">数量 <%= f. select :quantity, 1...@product.stock_quantity %> :</th>
 						<th><%= f.hidden_field :product_id, :value => params[:id] %>
 						<%= f.submit 'カートに入れる', class: "btn btn-info glyphicon "%></th>
 					<% end %>
@@ -40,6 +40,15 @@
 		</div>
 	</div>
 	<div class="song-box">
-	<p>song</p>
+		<% @product.discs.each do |disc| %>
+			<dt>ディスク</dt>
+			<dd><%= disc.disc_number %></dd>
+			<dd><%= disc.disc_name %></dd>
+				<% disc.songs.each do |song| %>
+					<dt>曲名</dt>
+					<dd><%= song.song_number %></dd>
+					<dd><%= song.title %></dd>
+				<% end %>
+		<% end %>
 	</div>
 </div>
