@@ -17,8 +17,9 @@
 			<td><%= cart.quantity %></td>
 			<td><%= cart.product.price %>円</td>
 			<td><%= cart.product.price * cart.quantity %>円</td>
+			<td><% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %></td>
 		</tr>
-		<% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %>
+		
 		<% end %>
 	</tbody>
 </table>

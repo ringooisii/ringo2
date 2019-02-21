@@ -1,34 +1,34 @@
 
 <div class="col-xs-3">
-  <div class="edit-box">
+	<div class="edit-box">
 
-	<table>
-		<thead>
+		<table>
+			<thead>
 
-			<tr>
 				<tr>
-					<th><%= @user.first_name %><%= @user.last_name %></th>
+					<tr>
+						<th><%= @user.first_name %><%= @user.last_name %></th>
+					</tr>
+					<tr>
+						<th><%= @user.first_name_kana %><%= @user.last_name_kana %></th>
+					</tr>
+					<tr>
+						<th><%= @user.postcode %></th>
+					</tr>
+					<tr>
+						<th><%= @user.address %></th>
+					</tr>
+					<tr>
+						<th><%= @user.email %></th>
+					</tr>
 				</tr>
-				<tr>
-					<th><%= @user.first_name_kana %><%= @user.last_name_kana %></th>
-				</tr>
-				<tr>
-					<th><%= @user.postcode %></th>
-				</tr>
-				<tr>
-					<th><%= @user.address %></th>
-				</tr>
-				<tr>
-					<th><%= @user.email %></th>
-				</tr>
-			</tr>
 
-		</thead>
-	</table>
+			</thead>
+		</table>
 
-	<%= link_to "編集",edit_user_path %><br>
-	<%= link_to "退会はこちらから",user_path,method: :delete,"data-confirm" => "本当に退会しますか？" %>
-  </div>
+		<%= link_to "編集",edit_user_path %><br>
+		<%= link_to "退会はこちらから",user_path,method: :delete,"data-confirm" => "本当に退会しますか？" %>
+	</div>
 </div>
 
 
@@ -50,56 +50,57 @@
 				<!-- ログインしているuserの商品情報を表示 -->
 				<% current_user.orders.each do |order| %>
 				<% if order.order_status == "未発送" %>
-					<tr>
-					<!-- 　注文履歴の表示 -->
-					  <% order.order_products.each do |order_product|%>
-						<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-						<td><%= order_product.order_name %></td>
-						<td><%= order_product.order_quantity %></td>
-						<td><%= order_product.order_price %></td>
-						<td><%= order_product.order_price * order_product.order_quantity %></td>
-						<td><%= order.order_status %></td>
-                      <% end %>
-
-					  <% end %>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-	</div>
-	<div class="order-right">
-		<h2 class="order-1">注文履歴</h2>
-		<table class="table">
-			<thead>
 				<tr>
-					<th>商品画像</th>
-					<th>商品名</th>
-					<th>数量</th>
-					<th>価格</th>
-					<th>小計</th>
-					<th>発送状況<br>ステータス</th>
-				</tr>
-			</thead>
-			<tbody>
-			    <!-- ログインしているuserの商品情報を表示 -->
-				<% current_user.orders.each do |order| %>
-				<% if order.order_status != "未発送" %>
-					<tr>
 					<!-- 　注文履歴の表示 -->
-					  <% order.order_products.each do |order_product|%>
+					<% order.order_products.each do |order_product|%>
+					<tr>
 						<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
 						<td><%= order_product.order_name %></td>
 						<td><%= order_product.order_quantity %></td>
 						<td><%= order_product.order_price %></td>
 						<td><%= order_product.order_price * order_product.order_quantity %></td>
 						<td><%= order.order_status %></td>
-                      <% end %>
+						<% end %>
 
-					  <% end %>
+						<% end %>
 					</tr>
-				<% end %>
-			</tbody>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+		<div class="order-right">
+			<h2 class="order-1">注文履歴</h2>
+			<table class="table">
+				<thead>
+					<tr>
+						<th>商品画像</th>
+						<th>商品名</th>
+						<th>数量</th>
+						<th>価格</th>
+						<th>小計</th>
+						<th>発送状況<br>ステータス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- ログインしているuserの商品情報を表示 -->
+					<% current_user.orders.each do |order| %>
+					<% if order.order_status != "未発送" %>
+					<tr>
+						<!-- 　注文履歴の表示 -->
+						<% order.order_products.each do |order_product|%>
+						<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+						<td><%= order_product.order_name %></td>
+						<td><%= order_product.order_quantity %></td>
+						<td><%= order_product.order_price %></td>
+						<td><%= order_product.order_price * order_product.order_quantity %></td>
+						<td><%= order.order_status %></td>
+						<% end %>
 
-		</table>
+						<% end %>
+					</tr>
+					<% end %>
+				</tbody>
+
+			</table>
+		</div>
 	</div>
-</div>
