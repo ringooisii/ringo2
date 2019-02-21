@@ -18,7 +18,10 @@
 			<td><%= cart.quantity %></td>
 			<td><%= cart.product.price %>円</td>
 			<td><%= cart.product.price * cart.quantity %>円</td>
-			<td><% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %></td>
+			<td><div class="total-right">
+		        <span class="total-name">総合計:</span><span class="total-price">
+		        	<%= number_with_delimiter(cart.product.price * cart.quantity) %>円</span><span>  (税込)</span>
+			</div></td>
 		</tr>
 		<% end %>
 	</tbody>
@@ -29,6 +32,7 @@
 
   </thead>
 </table>
+<div class="shipping-form">
   <%= form_for(@order) do |f| %>
       <% current_user.shippings.each do |shipping| %>
         <div class="user-shipping-address">
@@ -42,3 +46,4 @@
 
 
 <%= link_to "配送先住所登録",shippings_path %>
+</div>
