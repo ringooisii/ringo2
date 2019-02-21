@@ -10,8 +10,9 @@
   </head>
 
   <body>
+
   <nav class="navbar navbar-default">
-  <div class="container-fluid">
+  <div class="container-fluid navi_list">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
         <span class="sr-only">Toggle navigation</span>
@@ -39,8 +40,9 @@
     <% if user_signed_in? && current_user.id == 1 %>
       <!-- 管理者がログインしている時 -->
       <p class="navbar-text">管理者画面</p>
-      <div class="collapse navbar-collapse navbar-right" id="navbarEexample">
+      <div class="collapse navbar-collapse navbar-right navi_list_icon" id="navbarEexample">
         <ul class="nav navbar-nav">
+          <li><%= link_to 'TOP画面へ戻る', products_path %></li>
           <li><%= link_to '登録者 一覧', admin_users_path %></li>
           <li><%= link_to '登録商品 一覧', admin_products_path %></li>
           <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
@@ -49,9 +51,14 @@
 
     <% elsif user_signed_in? %>
       <!-- ユーザーがログインしている時 -->
-      <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
+      <div class="collapse navbar-collapse navbar-right navi_list_icon" id="navbarEexample1">
         <ul class="nav navbar-nav">
-          <li><%= link_to 'カート', carts_path %></li>
+
+          <li><%= link_to carts_path do %>
+              <p><span class="glyphicon glyphicon-shopping-cart" style="font-size:25px;"></span>カート</p>
+              <% end %>
+          </li>
+
           <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
           <li><%= link_to current_user.last_name, user_path %></li>
         </ul>
@@ -59,9 +66,9 @@
 
     <% else %>
       <!-- ユーザーがログインしていない時 -->
-      <div class="collapse navbar-collapse navbar-right" id="navbarEexample1">
+      <div class="collapse navbar-collapse navbar-right navi_list_icon" id="navbarEexample1">
         <ul class="nav navbar-nav">
-          <li><%= link_to '新規会員登録', new_user_registration_path %></li>
+          <li class=""><%= link_to '新規会員登録', new_user_registration_path %></li>
           <li><%= link_to 'ログイン', new_user_session_path %></li>
           <li><a>ゲスト様</a></li>
         </ul>
@@ -75,30 +82,16 @@
   <%= yield %>
 
   <footer class="footer">
-    <div>
-      <div>
-        <h1>Top(商品一覧）ページです</h1>
-        <p>各ページへのリンクを仮置き</p>
-        <ul>
-          <li><a href= "http://localhost:3000/users/sign_in">userログイン画面</a></li>
-          <li><a href= "http://localhost:3000/users/sign_up">user新規登録画面</a></li>
-          <li><a href= "http://localhost:3000/user">user詳細画面</a></li>
-          <li><a href= "http://localhost:3000/user/edit">user情報編集画面</a></li>
-          <li><a href= "http://localhost:3000/products/1">商品詳細画面id1</a></li>
-          <li><a href= "http://localhost:3000/carts">カート画面</a></li>
-          <li><a href= "http://localhost:3000/shippings">配達情報登録画面</a></li>
-          <li><a href= "http://localhost:3000/orders">注文情報確定画面id1</a></li>
-          <li><a href= "http://localhost:3000/admin/users">登録user一覧画面（管理者側）</a></li>
-          <li><a href= "http://localhost:3000/admin/users/1">登録user詳細画面id1(管理者側）</a></li>
-          <li><a href= "http://localhost:3000/admin/users/1/edit">登録user情報編集画面id1(管理者側）</a></li>
-          <li><a href= "http://localhost:3000/admin/products/new">表品登録</a></li>
-          <li><a href= "http://localhost:3000/admin/products">登録商品一覧画面（管理者側）</a></li>
-          <li><a href= "http://localhost:3000/admin/products/1">登録商品詳細画面id1（管理者側）</a></li>
-          <li><a href= "http://localhost:3000/admin/products/1/edit">登録商品情報編集画面id1(管理者側）</a></li>
-          <li><a href= "http://localhost:3000/admin/orders">注文一覧画面(管理者側Top）</a></li>
-          <li><a href= "http://localhost:3000/admin/orders/1">注文詳細画面id1(管理者側）</a></li>
-        </ul>
-      </div>
+    <div class="company_list">
+      <ul>
+        <li>会社情報</li>
+        <li>お知らせ</li>
+        <li>よくある質問</li>
+        <li>採用情報</li>
+        <li>お問い合わせ</li>
+      </ul>
+    </div>
+    <div class="company_name">
       <p class="text-muted">©︎林檎team</p>
     </div>
   </footer>

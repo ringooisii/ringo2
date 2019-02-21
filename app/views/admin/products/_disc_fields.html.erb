@@ -1,7 +1,7 @@
 <div class="nested-fields well well-compact">
   <div class="form-group">
     <%= f.label :No %>
-    <%= f.text_field :disc_number %>
+    <%= f.select :disc_number, 1...6 %>
     <%= f.label :ディスク名 %>
     <%= f.text_field :disc_name %>
     <%= link_to_remove_association "ディスク削除", f %>
