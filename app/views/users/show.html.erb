@@ -51,20 +51,22 @@
 					<% current_user.orders.each do |order| %>
 					<% if order.order_status == "未発送" %>
 					<tr>
-						<!-- 　注文履歴の表示 -->
-						<% order.order_products.each do |order_product|%>
-						<tr>
-							<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-							<td><%= order_product.order_name %></td>
-							<td><%= order_product.order_quantity %></td>
-							<td><%= order_product.order_price %></td>
-							<td><%= order_product.order_price * order_product.order_quantity %></td>
-							<td><%= order.order_status %></td>
-							<% end %>
+						<div class="order-view">
+							<!-- 　注文履歴の表示 -->
+							<% order.order_products.each do |order_product|%>
+							<tr>
+								<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+								<td><%= order_product.order_name %></td>
+								<td><%= order_product.order_quantity %></td>
+								<td><%= order_product.order_price %></td>
+								<td><%= order_product.order_price * order_product.order_quantity %></td>
+								<td><%= order.order_status %></td>
+								<% end %>
 
+								<% end %>
+							</tr>
 							<% end %>
-						</tr>
-						<% end %>
+					    </div>
 				</tbody>
 			</table>
 			<div class="order-right">
@@ -81,23 +83,25 @@
 						</tr>
 					</thead>
 					<tbody>
-						<!-- ログインしているuserの商品情報を表示 -->
-						<% current_user.orders.each do |order| %>
-						<% if order.order_status != "未発送" %>
-						<tr>
-							<!-- 　注文履歴の表示 -->
-							<% order.order_products.each do |order_product|%>
-							<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-							<td><%= order_product.order_name %></td>
-							<td><%= order_product.order_quantity %></td>
-							<td><%= order_product.order_price %></td>
-							<td><%= order_product.order_price * order_product.order_quantity %></td>
-							<td><%= order.order_status %></td>
-							<% end %>
+						<div class="order-view">
+							<!-- ログインしているuserの商品情報を表示 -->
+							<% current_user.orders.each do |order| %>
+							<% if order.order_status != "未発送" %>
+							<tr>
+								<!-- 　注文履歴の表示 -->
+								<% order.order_products.each do |order_product|%>
+								<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+								<td><%= order_product.order_name %></td>
+								<td><%= order_product.order_quantity %></td>
+								<td><%= order_product.order_price %></td>
+								<td><%= order_product.order_price * order_product.order_quantity %></td>
+								<td><%= order.order_status %></td>
+								<% end %>
 
+								<% end %>
+							</tr>
 							<% end %>
-						</tr>
-						<% end %>
+						</div>
 					</tbody>
 
 				</table>
