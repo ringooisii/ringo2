@@ -6,12 +6,12 @@ class ApplicationController < ActionController::Base
       if resource.id == 1
         admin_orders_path
       else
-        products_path # ログイン後に遷移するpathを設定
+        root_path # ログイン後に遷移するpathを設定
     end
 	end
 
   def after_sign_up_path_for(resource)
-      products_path # ログイン後に遷移するpathを設定
+      root_path # ログイン後に遷移するpathを設定
   end
 
 	def after_sign_out_path_for(resource)
