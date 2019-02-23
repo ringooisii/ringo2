@@ -27,7 +27,7 @@
 			</table>
 
 			<%= link_to "編集",edit_user_path %><br>
-			<%= link_to "退会はこちらから",user_path,method: :delete,"data-confirm" => "本当に退会しますか？" %>
+			<%= link_to "退会はこちらから",user_path,class:"btn-sm btn-danger",method: :delete,"data-confirm" => "本当に退会しますか？" %>
 		</div>
 	</div>
 
@@ -35,9 +35,10 @@
 	<div class="col-md-9">
 		<div class="user-right">
 			<h2 class="order-1">注文中の商品</h2>
-			<table class="table">
+			<table class="table align-middle table-bordered">
 				<thead>
 					<tr>
+						<th>注文id</th>
 						<th>商品画像</th>
 						<th>商品名</th>
 						<th>数量</th>
@@ -46,64 +47,69 @@
 						<th>発送状況</th>
 					</tr>
 				</thead>
+
+
 				<tbody>
 					<!-- ログインしているuserの商品情報を表示 -->
 					<% current_user.orders.each do |order| %>
 					<% if order.order_status == "未発送" %>
-					<tr>
-						<div class="order-view">
-							<!-- 　注文履歴の表示 -->
-							<% order.order_products.each do |order_product|%>
-							<tr>
-								<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-								<td><%= order_product.order_name %></td>
-								<td><%= order_product.order_quantity %></td>
-								<td><%= order_product.order_price %></td>
-								<td><%= order_product.order_price * order_product.order_quantity %></td>
-								<td><%= order.order_status %></td>
-								<% end %>
-
-								<% end %>
-							</tr>
-							<% end %>
-					    </div>
+					<tr class="order-list">
+						<!-- 　注文履歴の表示 -->
+						<% order.order_products.each do |order_product|%>
+						<tr>
+							<td><%= order_product.order_id %></td>
+							<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+							<td><%= link_to order_product.order_name,product_path(order_product.product.id) %></td>
+							<td><%= order_product.order_quantity %></td>
+							<td><%= order_product.order_price %></td>
+							<td><%= order_product.order_price * order_product.order_quantity %></td>
+							<td><%= order.order_status %></td>
+						</tr>
+						<% end %>
+					</tr>
+					<% end %>
+					<% end %>
 				</tbody>
+
 			</table>
 			<div class="order-right">
 				<h2 class="order-1">注文履歴</h2>
-				<table class="table">
+				<table class="table align-middle table-bordered">
 					<thead>
 						<tr>
+							<th>注文id</th>
 							<th>商品画像</th>
 							<th>商品名</th>
 							<th>数量</th>
 							<th>価格</th>
 							<th>小計</th>
-							<th>発送状況<br>ステータス</th>
+							<th>発送状況</th>
 						</tr>
 					</thead>
 					<tbody>
-						<div class="order-view">
-							<!-- ログインしているuserの商品情報を表示 -->
-							<% current_user.orders.each do |order| %>
-							<% if order.order_status != "未発送" %>
+						<!-- ログインしているuserの商品情報を表示 -->
+						<% current_user.orders.each do |order| %>
+						<% if order.order_status != "未発送" %>
+						<tr class="order-list">
+							<!-- 　注文履歴の表示 -->
+							<% order.order_products.each do |order_product|%>
 							<tr>
-								<!-- 　注文履歴の表示 -->
-								<% order.order_products.each do |order_product|%>
-								<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-								<td><%= order_product.order_name %></td>
+								<td><%= order.id %></td>
+								<td>
+									<%= attachment_image_tag(order_product.product, :product_image,
+									fallback:"noimage.png",size: '100x100') %>
+								</td>
+								<td><%= link_to order_product.order_name,product_path(order_product.product.id) %></td>
 								<td><%= order_product.order_quantity %></td>
 								<td><%= order_product.order_price %></td>
 								<td><%= order_product.order_price * order_product.order_quantity %></td>
 								<td><%= order.order_status %></td>
-								<% end %>
-
-								<% end %>
 							</tr>
 							<% end %>
-						</div>
+						</tr>
+						<% end %>
+						<% end %>
 					</tbody>
-
 				</table>
+			</div>
 		</div>
-	</div>

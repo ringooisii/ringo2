@@ -18,20 +18,14 @@
 			<td><%= cart.quantity %></td>
 			<td><%= cart.product.price %>円</td>
 			<td><%= cart.product.price * cart.quantity %>円</td>
-			<td><div class="total-right">
-		        <span class="total-name">総合計:</span><span class="total-price">
-		        	<%= number_with_delimiter(cart.product.price * cart.quantity) %>円</span><span>  (税込)</span>
-			</div></td>
+			<td><% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %></td>
 		</tr>
 		<% end %>
 	</tbody>
 </table>
-<p><%= @total%></p>
-<table class="table">
-  <thead>
-
-  </thead>
-</table>
+<div class="total-right">
+	<span class="total-name">お支払い合計金額: </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
+</div>
 <div class="shipping-form">
   <%= form_for(@order) do |f| %>
       <% current_user.shippings.each do |shipping| %>
