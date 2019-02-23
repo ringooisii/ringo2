@@ -42,7 +42,7 @@
 						<!-- <td><%#= @p.product_name %></td> -->
 						<td>
 							<% order.order_products.each do |p| %>
-								<%= p.product.product_name %>
+								<%= p.order_name %>
 							<% end %>
 						</td>
 						<td><%= order.created_at %></td>

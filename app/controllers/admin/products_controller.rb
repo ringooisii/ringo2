@@ -18,14 +18,14 @@ PER = 5
 	 if product.save
 		redirect_to root_path
 	 else
-	 	flash[:notice] = "error"
+	 	flash[:notice] = "入力漏れがあります"
 	 	@product = Product.new
 	 	render action: :new
 	 end
 	end
 
 	def show
-		@products = Product.find(params[:id])
+		@products = Product.with_deleted.find(params[:id])
 		#@product = Product.all.includes(:discs)
 	end
 
@@ -63,15 +63,3 @@ PER = 5
 			end
 		end
 end
-
-
-#genre
-#product_name
-#price
-#artist_name
-#product_image_id
-#company
-#stock_quantity
-#created_at
-#updated_at
-#deteled
