@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
+  PER = 7
   def show
   	@user = current_user
-    @orders = Order.all
-
+    @orders = Order.page(params[:page]).per(PER)
   end
 
   def edit

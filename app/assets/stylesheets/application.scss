@@ -40,9 +40,6 @@ header {
 
 .head p {
   display: inline-block;
-  font-size: 20px;
-  position: absolute;
-  bottom: 0;
   padding-left: 10px;
   margin-bottom: 0px;
 }
@@ -74,11 +71,8 @@ header {
 .navi-list p {
   position: absolute;
   bottom: 0;
+  font-size: 15px;
 }
-
-
-
-
 
 .main_contents {
   background: image-url('haikei.jpeg');

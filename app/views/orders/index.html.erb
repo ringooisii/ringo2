@@ -23,12 +23,10 @@
 		<% end %>
 	</tbody>
 </table>
-<p><%= @total%></p>
-<table class="table">
-  <thead>
-
-  </thead>
-</table>
+<div class="total-right">
+	<span class="total-name">お支払い合計金額: </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
+</div>
+<div class="shipping-form">
   <%= form_for(@order) do |f| %>
       <% current_user.shippings.each do |shipping| %>
         <div class="user-shipping-address">
@@ -42,3 +40,4 @@
 
 
 <%= link_to "配送先住所登録",shippings_path %>
+</div>

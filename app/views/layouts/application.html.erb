@@ -33,23 +33,39 @@
               <%= image_tag "logo.png" %>
           <% end %>
           <nav class="head_navi clearfix">
-            <li class="navi-list"><%#= image_tag "icon2.png", size: "30x30" %><br>
+            <li class="navi-list"><br>
               <%= link_to carts_path do %>
-                <p  style="font-size:15px;"><span class="glyphicon glyphicon-shopping-cart" style="font-size:25px;"></span>カート</p>
+                <p><span class="glyphicon glyphicon-shopping-cart" style="font-size:25px;"></span>カート</p>
               <% end %></li>
-            <li class="navi-list"><%= image_tag "icon2.png", size: "30x30" %><br><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
-            <li class="navi-list"><%= image_tag "icon1.png", size: "30x30" %><br><%= link_to "#{current_user.first_name} 様", user_path %></li>
+            <li class="navi-list">
+              <%= link_to destroy_user_session_path, method: :delete do %>
+              <p><%= image_tag "icon2.png", size: "30x30" %><br>ログアウト</p>
+              <% end %>
+            </li>
+            <li class="navi-list">
+              <%= link_to user_path do %>
+              <p><%= image_tag "icon1.png", size: "30x30" %><br><%= "#{current_user.first_name} 様" %></p>
+              <% end %>
+            </li>
           </nav>
-
         <% else %>
         <!-- ユーザーがログインしていない時 -->
           <%= link_to root_path do %>
               <%= image_tag "logo.png" %>
           <% end %>
           <nav class="head_navi clearfix">
-            <li class="navi-list"><%= image_tag "icon2.png", size: "30x30" %><br><%= link_to '新規会員登録', new_user_registration_path %></li>
-            <li class="navi-list"><%= image_tag "icon2.png", size: "30x30" %><br><%= link_to 'ログイン', new_user_session_path %></li>
-            <li class="navi-list"><%= image_tag "icon1.png", size: "30x30" %><br><a>ゲスト様</a></li>
+            <li class="navi-list">
+              <%= link_to new_user_registration_path do %>
+              <p><%= image_tag "icon2.png", size: "30x30" %><br>新規会員登録</p>
+              <% end %>
+            </li>
+            <li class="navi-list">
+              <%= link_to new_user_session_path do %>
+              <p><%= image_tag "icon2.png", size: "30x30" %><br>ログイン</p>
+              <% end %>
+            </li>
+            <li class="navi-list">
+              <a><p><%= image_tag "icon1.png", size: "30x30" %><br>ゲスト様</p></a></li>
           </nav>
         <% end %>
       </div>
