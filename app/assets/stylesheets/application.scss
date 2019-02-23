@@ -24,22 +24,68 @@
   clear: both;
 }
 
-  .navi_list {
-  padding-top: 20px;
-  background-color: white;
-  position: relative
-  }
+header {
+  width: 100%;
+  padding: 5px 0;
+  background-color: #ffffffe8;
+  border-bottom: solid 1px #777;
+  #background: image-url('haikei.jpeg')
+}
 
-  .navi_list_icon {
-  position: absolute;
-  bottom: 3px;
-  right: 0;
-  }
+.head {
+  margin: 0 auto;
+  position: relative;
+  padding: 0 25px;
+}
 
-  .navi_list_icon li {
-  border-rigth: red 1px solid;
+.head p {
   display: inline-block;
-  }
+  padding-left: 10px;
+  margin-bottom: 0px;
+}
+
+.head_navi {
+  float: left;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  display: table;
+  padding-right: 30px;
+}
+
+.navi-list {
+  width: 130px;
+  list-style: none;
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.navi-list a {
+  color: #000000;
+  text-decoration:none;
+  font-size: 15px;
+  font-family: sans-serif;
+}
+
+.navi-list p {
+  position: absolute;
+  bottom: 0;
+  font-size: 15px;
+}
+
+.main_contents {
+  background: image-url('haikei.jpeg');
+}
+
+.main_contents_mask {
+  height: 100%;
+  background: rgba(255,255,255,0.5);
+  padding: 30px 0;
+}
+
+
+
 
 
 
@@ -98,25 +144,37 @@
 
 .footer {
   background-color: #c0c0c0;
-  padding: 30px 0 50px 0;
+  padding: 30px 0 20px 0;
+  color: #777;
+  text-decoration:none
 }
 
-.company_list {
+.footer_company {
   list-style: none;
   display: inline-block;
   width: 70%;
+  margin-right: 20px;
 }
 
-.footer li {
-　text-colour:#808080;
-  margin-right: 20px;
+.company_list {
   display: inline-block;
+  margin-right: 20px;
+}
+
+.company_list a {
+  color: #777;
+  text-decoration:none;
 }
 
 .company_name {
   display: inline-block;
   text-align: right;
   width: 20%;
+}
+
+.footer_text {
+  margin: 0 0 0 40px;
+  font-size: 10px;
 }
 
 
