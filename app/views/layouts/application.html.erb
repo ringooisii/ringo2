@@ -10,91 +10,70 @@
   </head>
 
   <body>
+  <div class="main_contents">
 
-  <nav class="navbar navbar-default">
-  <div class="container-fluid navi_list">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
+    <header>
+      <div class="head">
+        <% if user_signed_in? && current_user.id == 1 %>
+        <!-- 管理者がログインしている時 -->
+          <%= link_to admin_orders_path do %>
+              <%= image_tag "logo.png" %>
+          <% end %>
+          <p>管理者画面</p>
+          <nav class="head_navi clearfix">
+            <li class="navi-list"><%= link_to 'TOP画面へ戻る', products_path %></li>
+            <li class="navi-list"><%= link_to '登録者 一覧', admin_users_path %></li>
+            <li class="navi-list"><%= link_to '登録商品 一覧', admin_products_path %></li>
+            <li class="navi-list"><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+          </nav>
 
-      <% if user_signed_in? && current_user.id == 1 %>
+        <% elsif user_signed_in? %>
+        <!-- ユーザーがログインしている時 -->
+          <%= link_to root_path do %>
+              <%= image_tag "logo.png" %>
+          <% end %>
+          <nav class="head_navi clearfix">
+            <li class="navi-list"><%#= image_tag "icon2.png", size: "30x30" %><br>
+              <%= link_to carts_path do %>
+                <p  style="font-size:15px;"><span class="glyphicon glyphicon-shopping-cart" style="font-size:25px;"></span>カート</p>
+              <% end %></li>
+            <li class="navi-list"><%= image_tag "icon2.png", size: "30x30" %><br><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
+            <li class="navi-list"><%= image_tag "icon1.png", size: "30x30" %><br><%= link_to "#{current_user.first_name} 様", user_path %></li>
+          </nav>
 
-        <%= link_to admin_orders_path do %>
-          <%= image_tag "logo.png" %>
+        <% else %>
+        <!-- ユーザーがログインしていない時 -->
+          <%= link_to root_path do %>
+              <%= image_tag "logo.png" %>
+          <% end %>
+          <nav class="head_navi clearfix">
+            <li class="navi-list"><%= image_tag "icon2.png", size: "30x30" %><br><%= link_to '新規会員登録', new_user_registration_path %></li>
+            <li class="navi-list"><%= image_tag "icon2.png", size: "30x30" %><br><%= link_to 'ログイン', new_user_session_path %></li>
+            <li class="navi-list"><%= image_tag "icon1.png", size: "30x30" %><br><a>ゲスト様</a></li>
+          </nav>
         <% end %>
-
-      <% else %>
-
-        <%= link_to root_path do %>
-          <%= image_tag "logo.png" %>
-        <% end %>
-
-      <% end %>
-
-    </div>
-
-    <% if user_signed_in? && current_user.id == 1 %>
-      <!-- 管理者がログインしている時 -->
-      <p class="navbar-text">管理者画面</p>
-      <div class="collapse navbar-collapse navbar-right navi_list_icon" id="navbarEexample">
-        <ul class="nav navbar-nav">
-          <li><%= link_to 'TOP画面へ戻る', products_path %></li>
-          <li><%= link_to '登録者 一覧', admin_users_path %></li>
-          <li><%= link_to '登録商品 一覧', admin_products_path %></li>
-          <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
-        </ul>
       </div>
+    </header>
 
-    <% elsif user_signed_in? %>
-      <!-- ユーザーがログインしている時 -->
-      <div class="collapse navbar-collapse navbar-right navi_list_icon" id="navbarEexample1">
-        <ul class="nav navbar-nav">
-
-          <li><%= link_to carts_path do %>
-              <p><span class="glyphicon glyphicon-shopping-cart" style="font-size:25px;"></span>カート</p>
-              <% end %>
-          </li>
-
-          <li><%= link_to 'ログアウト', destroy_user_session_path , method: :delete %></li>
-          <li><%= link_to current_user.last_name, user_path %></li>
-        </ul>
+      <div class="main_contents_mask">
+        <%= yield %>
       </div>
-
-    <% else %>
-      <!-- ユーザーがログインしていない時 -->
-      <div class="collapse navbar-collapse navbar-right navi_list_icon" id="navbarEexample1">
-        <ul class="nav navbar-nav">
-          <li class=""><%= link_to '新規会員登録', new_user_registration_path %></li>
-          <li><%= link_to 'ログイン', new_user_session_path %></li>
-          <li><a>ゲスト様</a></li>
-        </ul>
-      </div>
-
-    <% end %>
-
   </div>
-  </nav>
 
-  <%= yield %>
-
-  <footer class="footer">
-    <div class="company_list">
-      <ul>
-        <li>会社情報</li>
-        <li>お知らせ</li>
-        <li>よくある質問</li>
-        <li>採用情報</li>
-        <li>お問い合わせ</li>
+    <footer class="footer">
+      <ul class="footer_company">
+        <li class="company_list"><a href="#">会社情報</a></li>
+        <li class="company_list"><a href="#">お知らせ</a></li>
+        <li class="company_list"><a href="#">よくあるご質問</a></li>
+        <li class="company_list"><a href="#">採用情報</a></li>
+        <li class="company_list"><a href="#">お問い合わせ</a></li>
       </ul>
-    </div>
-    <div class="company_name">
-      <p class="text-muted">©︎林檎team</p>
-    </div>
-  </footer>
+      <div class="company_name">
+        <p class="text-muted">©︎林檎team</p>
+      </div>
+      <p class="footer_text">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.<br>
+      The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters</p>
+    </footer>
 
   </body>
 </html>
