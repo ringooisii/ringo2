@@ -7,13 +7,15 @@
 	<div class="row">
 		<div class= "col-md-2">
 			<p class="title">検索</p>
+			<br>
+			<div class="left-off">
 			<%= search_form_for(@search, method: :get)  do |f| %> <!--検索機能-->
 				<%= f.label :product_name_cont, "商品名",class: "label-top" %>
-				<%= f.text_field :product_name_cont %>
+				<%= f.text_field :product_name_cont,size:16 %>
 				<%= f.label :artist_name_cont, "アーティスト名",class: "label-top" %>
-				<%= f.text_field :artist_name_cont %>
-				<%= f.label :price_lt, '価格',class: "label-top" %>
-				<%= f.number_field :price_lt,placeholder: "****円以下" %>
+				<%= f.text_field :artist_name_cont,size: 16 %>
+				<%= f.label :price_lt, '価格(xxx円以下)',class: "label-top" %>
+				<%= f.number_field :price_lt,size: 16,placeholder: "例: 3000",class: "size" %>
 				<%= f.label :genre, 'ジャンル',class: "label-top" %>
 				<br>
 				<%= f.select :genre_cont, Product.genres,{include_blank: "指定なし"} %>
@@ -21,13 +23,18 @@
 				<div class="form-group">
 				<br>
 				<%= f.submit "検索" %>
+				<br>
+				<br>
 				<%= link_to '検索条件のクリア', request.path %>
 				</div>
 			<% end %>
+			</div>
 		</div>
+
 
 		<div class="col-md-10">
 			<p class="title">CD</p>
+			<br>
 				<div class="item-box">
 					<% @products.each do |product| %>
 						<div class="item">
