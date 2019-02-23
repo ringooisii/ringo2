@@ -5,7 +5,6 @@ class OrderProductsController < ApplicationController
 	end
 
 	def update
-		
 	end
 
 	def destroy
