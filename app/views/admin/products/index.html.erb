@@ -1,12 +1,10 @@
 <div class="container">
-		<div class="row">
-			<button class="col-md-offset-10 btn btn-link" type="button">
-				<%= link_to "商品登録", new_admin_product_path, data: {"turbolinks" => false} %>
-			</button>
-		</div>
 	<div class="row">
 		<div class="main col-md-offset-2 col-md-8">
 		<h1>登録商品一覧画面</h1>
+		<div style="width: 80%; text-align: right;">
+		<%= link_to "新規 商品登録", new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-success btn-block" %>
+		</div>
 		<table class="table">
 			<thead>
 			<tr>
