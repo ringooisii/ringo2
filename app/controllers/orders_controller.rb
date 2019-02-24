@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+   PER = 3
   def index
     @order = Order.new
     @carts = current_user.carts

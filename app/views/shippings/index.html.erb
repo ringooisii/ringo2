@@ -1,12 +1,11 @@
-<% if !current_user.shippings.present? %>
-　　　<div class="attention-message">
-	  <h3>※配送先住所を登録してください※</h3>
-     </div>
-    <% end %>
-
     <div class="container">
     	<div class="row">
     		<div class="main col-md-offset-3 col-md-6">
+                <% if !current_user.shippings.present? %>
+                    <div class="attention-message">
+                        <h3>※配送先住所を登録してください※</h3>
+                    </div>
+                <% end %>
     			<div class="panel panel-default">
     				<div class="panel-heading">配達先情報登録フォーム</div>
     				<div class="panel-body">
