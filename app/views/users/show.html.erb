@@ -4,20 +4,19 @@
 		<div class="panel panel-default user_show_profile">
 			<table class="table">
 				<tr class="profile_categorys">
-					<th>名前</th>
-					<td><%= @user.first_name %><%= @user.last_name %>
-						<%= @user.first_name_kana %><%= @user.last_name_kana %></td>
+					<th style="width:15%">名前:</th>
+					<td><%= @user.first_name %><%= @user.last_name %></td>
 				</tr>
 				<tr>
-					<th>郵便番号</th>
+					<th style="width:15%">郵便番号:</th>
 					<td><%= @user.postcode %></td>
 				</tr>
 				<tr>
-					<th>住所</th>
+					<th style="width:15%">住所:</th>
 					<td><%= @user.address %></td>
 				</tr>
 				<tr>
-					<th>メールアドレス</th>
+					<th style="width:15%">メールアドレス:</th>
 					<td><%= @user.email %></td>
 						</tr>
 			</table>
@@ -29,34 +28,31 @@
 	</div>
 	<div class="col-md-8">
 		<div class="user_order">
-			<h2>注文中の商品</h2>
-			<table class="table">
-				<thead>
+			<h4>注文中の商品</h4>
+			<table class="table align-middle table-bordered">
+					<tbody>
 					<tr>
-						<th>注文id</th>
-						<th>商品画像</th>
-						<th>商品名</th>
-						<th>数量</th>
-						<th>価格</th>
-						<th>小計</th>
-						<th>発送状況</th>
+						<th class="align-middle">購入日</th>
+						<th class="align-middle">商品画像</th>
+						<th class="align-middle">商品名</th>
+						<th class="align-middle">数量</th>
+						<th class="align-middle">商品価格</th>
+						<th class="align-middle">小計</th>
+						<th class="align-middle">発送状況</th>
 					</tr>
-				</thead>
-
-
-				<tbody>
 					<!-- ログインしているuserの商品情報を表示 -->
 					<% current_user.orders.each do |order| %>
 					<% if order.order_status == "未発送" %>
 						<!-- 　注文履歴の表示 -->
 						<% order.order_products.each do |order_product|%>
 							<tr>
-								<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '80x80') %></td>
-								<td><%= order_product.order_name %></td>
-								<td><%= order_product.order_quantity %></td>
-								<td><%= order_product.order_price %></td>
-								<td><%= order_product.order_price * order_product.order_quantity %></td>
-								<td><%= order.order_status %></td>
+								<th class="align-middle"><%= order_product.created_at.strftime("%Y-%m-%d %H:%M:%S") %></th>
+								<th class="align-middle"><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '80x80') %></th>
+								<th class="align-middle"><%= order_product.order_name %></th>
+								<th class="align-middle"><%= order_product.order_quantity %>枚</th>
+								<th class="align-middle"><%= number_with_delimiter(order_product.order_price) %>円</th>
+								<th class="align-middle"><%= number_with_delimiter(order_product.order_price * order_product.order_quantity) %>円</th>
+								<th class="align-middle"><%= order.order_status %></th>
 							</tr>
 						<% end %>
 
@@ -68,31 +64,31 @@
 		</div>
 
 		<div class="user_order">
-			<h2>注文履歴</h2>
-			<table class="table">
-				<thead>
-					<tr>
-						<th>商品画像</th>
-						<th>商品名</th>
-						<th>数量</th>
-						<th>価格</th>
-						<th>小計</th>
-						<th>発送状況<br>ステータス</th>
-					</tr>
-				</thead>
+			<h4>過去の注文商品</h4>
+			<table class="table align-middle table-bordered">
 				<tbody>
+					<tr>
+						<th class="align-middle">購入日</th>
+						<th class="align-middle">商品画像</th>
+						<th class="align-middle">商品名</th>
+						<th class="align-middle">数量</th>
+						<th class="align-middle">商品価格</th>
+						<th class="align-middle">小計</th>
+						<th class="align-middle">発送状況</th>
+					</tr>
 					<!-- ログインしているuserの商品情報を表示 -->
 					<% current_user.orders.each do |order| %>
 					<% if order.order_status != "未発送" %>
 						<!-- 　注文履歴の表示 -->
 						<% order.order_products.each do |order_product|%>
 							<tr>
-									<td><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-									<td><%= order_product.order_name %></td>
-									<td><%= order_product.order_quantity %></td>
-									<td><%= order_product.order_price %></td>
-									<td><%= order_product.order_price * order_product.order_quantity %></td>
-									<td><%= order.order_status %></td>
+									<th class="align-middle"><%= order_product.created_at.strftime("%Y-%m-%d %H:%M:%S") %></th>
+									<th class="align-middle"><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></th>
+									<th class="align-middle"><%= order_product.order_name %></th>
+									<th class="align-middle"><%= order_product.order_quantity %>枚</th>
+									<th class="align-middle"><%= number_with_delimiter(order_product.order_price) %>円</th>
+									<th class="align-middle"><%= number_with_delimiter(order_product.order_price * order_product.order_quantity) %>円</th>
+									<th class="align-middle"><%= order.order_status %></th>
 							</tr>
 						<% end %>
 					<% end %>
