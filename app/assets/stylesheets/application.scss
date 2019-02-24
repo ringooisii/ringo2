@@ -29,7 +29,6 @@ header {
   padding: 5px 0;
   background-color: #ffffffe8;
   border-bottom: solid 1px #777;
-  #background: image-url('haikei.jpeg')
 }
 
 .head {
@@ -42,6 +41,9 @@ header {
   display: inline-block;
   padding-left: 10px;
   margin-bottom: 0px;
+  position: absolute;
+  bottom: 0;
+  font-size: 30px;
 }
 
 .head_navi {
@@ -73,6 +75,9 @@ header {
   bottom: 0;
   font-size: 15px;
 }
+
+
+
 
 .main_contents {
   background: image-url('haikei.jpeg');

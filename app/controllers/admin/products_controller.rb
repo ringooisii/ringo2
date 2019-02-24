@@ -16,10 +16,11 @@ PER = 5
 	def create
 		product = Product.new(product_params)
 	 if product.save
-		redirect_to root_path
+	 	flash[:create] = "※商品を登録しました"
+		redirect_to  admin_products_path
 	 else
-	 	flash[:create] = "入力漏れがあります"
 	 	@product = Product.new
+	 	flash[:notice] = "※入力漏れがあります"
 	 	render action: :new
 	 end
 	end
@@ -33,13 +34,13 @@ PER = 5
 		@product = Product.find(params[:id])
 		@product.destroy
 		redirect_to admin_products_path
+		flash[:notice] = "商品を削除しました"
 	end
 
 	def edit
 		if Product.find_by(id: params[:id])
 			@product = Product.find_by(id: params[:id])
 		else
-			flash[:delete] = "この商品は削除されています"
 			redirect_to admin_product_path(params[:id])
 		end
 	end
@@ -47,10 +48,10 @@ PER = 5
 	def update
 			@product = Product.find(params[:id])
 		if @product.update(product_params)
-			#flash[:notice] = "successfully"
-			redirect_to admin_products_path(@product)
+			flash[:edit] = "※商品を編集しました"
+			redirect_to admin_product_path(params[:id])
 		else
-			flash[:edit] = "error"
+			flash[:edit] = "※入力漏れがあります"
 			render action: :edit
 		end
 	end
