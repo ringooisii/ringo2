@@ -1,6 +1,7 @@
-<p class="erorr-text"><h3><%= flash[:delete] %></h3>
+<p class="erorr-text"><h3></h3>
 <div class="admin_product_image">
 <div class="container">
+	<h3 class="success"><%= flash[:edit] %><%= flash[:delete] %></h3>
 	<div class="row">
 		<div class="main col-md-offset-2 col-md-8">
 			<div class="panel panel-default">
@@ -44,7 +45,10 @@
 							<%= link_to "編集", edit_admin_product_path, data: {"turbolinks" => false} %>
 						</button>
 						<button class="btn btn-default">
-							<%= link_to "削除", admin_product_path(@products.id), method: :delete %>
+							<%= link_to "削除", admin_product_path(@products.id),method: :delete,"data-confirm" => "商品を削除しますか？" %>
+						</button>
+						<button class="btn btn-default">
+							<%= link_to "Back", :back %>
 						</button>
 					</div>
 		</div>
