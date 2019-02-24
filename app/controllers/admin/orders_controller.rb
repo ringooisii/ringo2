@@ -16,7 +16,7 @@ class Admin::OrdersController < ApplicationController
 
     @order_products = OrderProduct.all
     @order_products.inject(0) { |sum, order_product|
-      @sales = sum + (order_product.order_quantity*order_product.product.price)
+      @sales = sum + (order_product.order_quantity*order_product.order_price)
     }
     # @sales = 0
     # @order_products.each do |order_product|

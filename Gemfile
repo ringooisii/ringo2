@@ -85,3 +85,5 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 
 gem 'paranoia'
+
+gem 'pry-rails'

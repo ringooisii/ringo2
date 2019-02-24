@@ -18,14 +18,14 @@ PER = 5
 	 if product.save
 		redirect_to root_path
 	 else
-	 	flash[:notice] = "error"
+	 	flash[:create] = "入力漏れがあります"
 	 	@product = Product.new
 	 	render action: :new
 	 end
 	end
 
 	def show
-		@products = Product.find(params[:id])
+		@products = Product.with_deleted.find(params[:id])
 		#@product = Product.all.includes(:discs)
 	end
 
@@ -36,7 +36,12 @@ PER = 5
 	end
 
 	def edit
-		@product = Product.find(params[:id])
+		if Product.find_by(id: params[:id])
+			@product = Product.find_by(id: params[:id])
+		else
+			flash[:delete] = "この商品は削除されています"
+			redirect_to admin_product_path(params[:id])
+		end
 	end
 
 	def update
@@ -45,7 +50,7 @@ PER = 5
 			#flash[:notice] = "successfully"
 			redirect_to admin_products_path(@product)
 		else
-			flash[:notice] = "error"
+			flash[:edit] = "error"
 			render action: :edit
 		end
 	end
@@ -63,15 +68,3 @@ PER = 5
 			end
 		end
 end
-
-
-#genre
-#product_name
-#price
-#artist_name
-#product_image_id
-#company
-#stock_quantity
-#created_at
-#updated_at
-#deteled

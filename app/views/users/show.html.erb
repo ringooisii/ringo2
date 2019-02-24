@@ -23,7 +23,7 @@
 			</table>
 			<div class="profile_btn">
 				<%= link_to "編集",edit_user_path, class: "btn btn-default center-block" %><br>
-				<%= link_to "退会はこちらから",user_path,method: :delete,"data-confirm" => "本当に退会しますか？", class: "btn btn-danger center-block" %>
+				<%= link_to "退会はこちらから",user_path, method: :delete,"data-confirm" => "本当に退会しますか？", class: "btn btn-danger center-block" %>
 			</div>
 		</div>
 	</div>
@@ -33,6 +33,7 @@
 			<table class="table">
 				<thead>
 					<tr>
+						<th>注文id</th>
 						<th>商品画像</th>
 						<th>商品名</th>
 						<th>数量</th>
@@ -41,6 +42,8 @@
 						<th>発送状況</th>
 					</tr>
 				</thead>
+
+
 				<tbody>
 					<!-- ログインしているuserの商品情報を表示 -->
 					<% current_user.orders.each do |order| %>
@@ -56,9 +59,11 @@
 								<td><%= order.order_status %></td>
 							</tr>
 						<% end %>
+
 					<% end %>
 					<% end %>
 				</tbody>
+
 			</table>
 		</div>
 
