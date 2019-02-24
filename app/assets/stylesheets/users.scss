@@ -2,18 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.order-view {
-	width: 100%;
-	height: 50px;
-	overflow: scroll;
+.user_show_profile {
+  padding: 10px;
+}
+.user_show_profile table {
+  padding-bottm: 20px;
 }
 
-.product-info {
-	display: block;
+.profile_btn {
+  padding: 20px 40px;
+  margin-top: 30px;
+  border-top: 1px solid #c0c0c0;
 }
 
-.order-list {
-	width: 100%;
-	height: 50px;
-	overflow: scroll;
+.user_order {
+  border: 1px solid #000000;
+  background-color: white;
+  padding: 0 20px;
+  margin-bottom: 10px;
+}
+
+.user_order thead,.user_order tbody {
+  display: block;
+}
+.user_order th, td {
+  width: 10%;
+}
+.user_order tbody {
+  overflow-y: scroll;
+  width: 100%;
+  height: 150px;
 }
