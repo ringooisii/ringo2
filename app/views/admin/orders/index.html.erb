@@ -9,11 +9,11 @@
 							<table class="table">
 								<tr>
 									<th style="width: 30%">売り上げ</th>
-									<td style="width: 70%; text-align: center;"><span class="total-name">総合計:  </span><span class="total-price"><%= @sales %>円</span><span>  (税込)</span></td>
+									<td style="width: 70%; text-align: left;"><span class="total-name">総合計:  </span><span class="total-price"><%= @sales %>円</span><span>  (税込)</span></td>
 								</tr>
 								<tr>
 									<th style="width: 30%">登録者数</th>
-									<td style="width: 70%; text-align: center;"><span class="total-price"><%= @users %>人</span></td>
+									<td style="width: 70%; text-align: left;"><span class="total-name">総登録者数: <span class="total-price"><%= @users %>人</span></span></td>
 								</tr>
 							</table>
 						</div>
@@ -48,7 +48,7 @@
 								<%# end %>
 						</td> -->
 							<td><%= order.created_at %></td>
-							<td><%= link_to "詳細", admin_order_path(order.id) %></td>
+							<td><%= link_to "詳細", admin_order_path(order.id), class: "btn btn-default" %></td>
 						</tr>
 						<% end %>
 					</tbody>
