@@ -10,6 +10,7 @@
   </head>
 
   <body>
+
   <% if user_signed_in? && current_user.id == 1 %>
   <div>
   <% else %>
@@ -26,7 +27,6 @@
           <p>管理者画面</p>
           <nav class="head_navi clearfix">
             <li class="navi-list"><%= link_to 'TOP画面へ戻る', products_path %></li>
-            <li class="navi-list"><%= link_to '商品登録', new_admin_product_path,data: {"turbolinks" => false} %></li>
             <li class="navi-list"><%= link_to '登録者 一覧', admin_users_path %></li>
             <li class="navi-list"><%= link_to '登録商品 一覧', admin_products_path %></li>
             <li class="navi-list"><%= link_to "新規商品登録", new_admin_product_path, data: {"turbolinks" => false} %></li>

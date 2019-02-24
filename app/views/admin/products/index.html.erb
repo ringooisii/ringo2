@@ -1,18 +1,12 @@
 <div class="container">
 	<h4 class="success"><%= flash[:create] %><%= flash[:notice] %></h4>
-		<div class="row">
-			<button class="col-md-offset-10 btn btn-link" type="button">
-				<%= link_to "商品登録", new_admin_product_path, data: {"turbolinks" => false} %>
-			</button>
-		</div>
 	<div class="row">
-		<div class="main col-md-offset-2 col-md-8">
+		<div class="main col-md-offset-1 col-md-10">
 		<h1 class="success"></h1>
-		<h1>登録商品一覧画面</h1>
-		<div style="width: 80%; text-align: right;">
-		<%= link_to "新規 商品登録", new_admin_product_path, data: {"turbolinks" => false}, class: "btn btn-success btn-block" %>
+		<div class="admin_order_headline">
+			<h2>登録商品一覧画面</h2>
 		</div>
-		<table class="table">
+		<table class="table admin_product_table">
 			<thead>
 			<tr>
 				<th>商品ID</th>
@@ -31,9 +25,9 @@
 				<td><%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
 				<td><%= product.product_name %></td>
 				<td><%= product.stock_quantity %></td>
-				<td><%= product.genre %></td>
-				<td><%= link_to "詳細", admin_product_path(product.id) %></td>
-				<td><%= link_to "削除", admin_product_path(product.id), method: :delete,"data-confirm" => "商品を削除しますか？" %></td>
+				<td><%= product.price %></td>
+				<td><%= link_to "詳細", admin_product_path(product.id), class: "btn btn-default" %></td>
+				<td><%= link_to "削除", admin_product_path(product.id), method: :delete,"data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
 				<% end %>
 			</tr>
 			</tbody>
