@@ -7,7 +7,7 @@ class Product < ApplicationRecord
   	has_many :carts
 
 	accepts_nested_attributes_for :discs, reject_if: :all_blank, allow_destroy: true
-	enum genre:{洋楽: 0,邦楽:1,ロック:2,ジャズ:3,KPOP:4,クラシック:5,アニメ:6}
+	enum genre:{JPOP: 0,KPOP:1,洋楽:2,ジャズ:3,ロック:4,クラシック:5,アニメ:6,ヒップホップ:7,ソウル:8}
 	validates :product_name, presence: true
 	validates :artist_name, presence: true
 	validates :price, presence: true
