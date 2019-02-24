@@ -1,44 +1,44 @@
-
-<h1>注文確認</h1>
-
-<table class="table">
-	<thead>
-			<h3>購入予定商品</h3>
-			<th>商品画像</th>
-			<th>商品名</th>
-			<th>数量</th>
-			<th>価格</th>
-			<th>小計</th>
-	</thead>
-	<tbody>
-		 <% @carts.each do |cart| %>
-		<tr>
-			<td><%= attachment_image_tag(cart.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-			<td><%= cart.product.product_name %></td>
-			<td><%= cart.quantity %></td>
-			<td><%= cart.product.price %>円</td>
-			<td><%= cart.product.price * cart.quantity %>円</td>
-			<td><% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %></td>
-		</tr>
-		<% end %>
-	</tbody>
-</table>
-<p><%= @total%></p>
-<table class="table">
-  <thead>
-
-  </thead>
-</table>
-  <%= form_for(@order) do |f| %>
-      <% current_user.shippings.each do |shipping| %>
-        <div class="user-shipping-address">
-         <%= f.radio_button :user_id, shipping.id %><%= shipping.shipping_address %>  <%= shipping.shipping_name %>
-        </div>
-      <% end %>
-
-      <br>
-	    <%= f.submit "注文確定" %>
-	<% end %>
-
-
-<%= link_to "配送先住所登録",shippings_path %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+    <h1>注文確認</h1>
+    <table class="table">
+    	<h3>購入予定商品</h3>
+      <thead>
+  			<th>商品画像</th>
+  			<th>商品名</th>
+  			<th>数量</th>
+  			<th>価格</th>
+  			<th>小計</th>
+    	</thead>
+    	<tbody>
+    		<% @carts.each do |cart| %>
+    		<tr>
+    			<td><%= attachment_image_tag(cart.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+    			<td><%= cart.product.product_name %></td>
+    			<td><%= cart.quantity %></td>
+    			<td><%= cart.product.price %>円</td>
+    			<td><%= cart.product.price * cart.quantity %>円</td>
+        </tr>
+    			<% @carts.inject(0) { |sum, cart| @total = sum + (cart.product.price * cart.quantity) } %>
+        <% end %>
+    	</tbody>
+    </table>
+    <div class="total-right">
+      <span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
+    </div>
+    <div class="orders_shippings">
+      <%= form_for(@order) do |f| %>
+        <% current_user.shippings.each do |shipping| %>
+          <div class="user-shipping-address">
+            <%= f.radio_button :user_id, shipping.id %><%= shipping.shipping_address %>  <%= shipping.shipping_name %>
+          </div>
+        <% end %>
+        <br>
+    	   <%= f.submit "注文確定" %>
+    	<% end %>
+    </div>
+    <%= link_to "配送先住所登録",shippings_path %>
+    </div>
+  </div>
+</div>
