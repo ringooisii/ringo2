@@ -15,7 +15,7 @@
 				</tr>
 				<tr>
 					<th class="text-right" style="width:20%">価格 :</th>
-					<th><%= @product.price %>円</th>
+					<th><%= number_with_delimiter(@product.price) %>円</th>
 				</tr>
 				<tr>
 					<th class="text-right" style="width:20%">ジャンル :</th>
