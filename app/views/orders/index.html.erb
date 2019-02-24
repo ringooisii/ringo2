@@ -1,7 +1,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1">
-      <h1>注文確認</h1>
       <div class="items_to_buy">
       <table class="table">
       	<h3>購入予定商品</h3>
@@ -30,19 +29,19 @@
         <span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
       </div>
       <div class="orders_shippings">
-        <h3>配送先</h3>
+        <h3>・配送先情報を選択して下さい</h3>
         <div class="orders_shippings_box">
         <%= form_for(@order) do |f| %>
           <% current_user.shippings.each do |shipping| %>
             <div class="user-shipping-address">
               <%= f.radio_button :user_id, shipping.id %>
-              <%= shipping.shipping_name %><br>
-              &nbsp;&nbsp;&nbsp;&nbsp;<!-- 空白 -->
-              <%= shipping.shipping_address %>
+              &nbsp;&nbsp;<span>お名前: <%= shipping.shipping_name %></span><br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- 空白 -->
+                &nbsp;&nbsp;<span>住所: <%= shipping.shipping_address %></span>
             </div>
           <% end %>
         </div>
-          <%= link_to "配送先住所 登録", shippings_path, class: "user_shipping_address_btn" %>
+          <%= link_to "配送先住所の新規登録はこちら", shippings_path,data: {"turbolinks" => false}, class: "user_shipping_address_btn" %>
       </div>
         <%= f.submit "注文確定", class: "btn btn-success order_confirmation_btm" %>
         <% end %>

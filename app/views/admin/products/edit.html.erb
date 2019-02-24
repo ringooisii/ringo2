@@ -1,9 +1,10 @@
-<p class="erorr-text"><h3><%= flash[:edit] %></h3>
+<p class="erorr-text">
 <div class="container">
 	<div class="row">
 		<div class="main col-md-offset-2 col-md-8">
+			<h3 class="success"><%= flash[:edit] %></h3>
 			<div class="panel panel-default">
-				<div class="panel-heading"><h2>商品情報 新規登録</h2></div>
+				<div class="panel-heading"><h2>商品情報 編集フォーム</h2></div>
 				<div class="panel-body">
 					<%= form_for ([:admin,@product]) do |f| %>
 					<p>
@@ -47,7 +48,7 @@
 		</div>s
 	</div>
 			<div class="actions row product-new" >
-				<%= f.submit :新規商品登録, class: "btn btn-primary col-md-offset-4 col-md-4" %>
+				<%= f.submit :商品情報編集, class: "btn btn-primary col-md-offset-4 col-md-4" %>
 					<% end %>
 
 
