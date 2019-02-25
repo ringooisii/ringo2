@@ -26,6 +26,13 @@
                 未発送
               <% end %>
           </p>
+          <label>配送先</label>
+          <p><%= @order.order_address %></p>
+          <div class="total-right">
+            <% @order_products.inject(0) { |sum, order_product| @total = sum + (order_product.order_quantity * order_product.order_price) } %>
+            <span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
+          </div>
+
         </div>
       </div>
       <div>
@@ -36,8 +43,8 @@
               <th>商品名</th>
               <th>個数</th>
               <th>価格</th>
-              <th>合計</th>
-              <th></th>
+              <th>小計</th>
+              <th>商品詳細</th>
             </tr>
           </thead>
           <tbody>
@@ -46,8 +53,11 @@
               <td><%= p.product_id %></td>
               <td><%= p.order_name %></td>
               <td><%= p.order_quantity %></td>
-              <td><%= p.order_price %></td>
-              <td><%= p.order_quantity * p.order_price %></td>
+              <td><%= number_with_delimiter(p.order_price) %></td>
+              <td>
+                <% @subtotal = p.order_quantity * p.order_price %>
+                <%= number_with_delimiter(@subtotal) %>
+              </td>
               <td>
                 <div>
                 <%= link_to '詳細', admin_product_path(p.id), class: "btn btn-default" %>
