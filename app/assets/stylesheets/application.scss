@@ -111,17 +111,37 @@ header {
     margin-bottom: 15px;
   }
 
-  .sign-up-box {
+
+
+  .sign_up_box {
   margin-left: 10px;
   }
-
-  .sign-up-box_text {
+  .sign_up_box_text {
     text-align: center;
   }
-  .sign-up-box_btn {
-    text-align: center;
+  .sign_up_box_btn {
+    height: 48px;
     margin-top: 15px;
+    position: relative;
+    margin-left: 30%;
   }
+  .sign_up_box_icon:nth-child(1) {
+    position: absolute;
+    bottom: -1px;
+    right: 257px;
+  }
+  .sign_up_box_icon:nth-child(2) {
+    font-size: 39px;
+    position: absolute;
+    bottom: -11px;
+    right: 0;
+  }
+  .fb_text {
+    font-size: 20px;
+  }
+
+
+
 
   .user-edit {
    padding-left:500px;
