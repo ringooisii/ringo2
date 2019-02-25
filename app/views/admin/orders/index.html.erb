@@ -9,7 +9,7 @@
 							<table class="table">
 								<tr>
 									<th style="width: 30%">売り上げ</th>
-									<td style="width: 70%; text-align: left;"><span class="total-name">総合計:  </span><span class="total-price"><%= @sales %>円</span><span>  (税込)</span></td>
+									<td style="width: 70%; text-align: left;"><span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@sales) %>円</span><span>  (税込)</span></td>
 								</tr>
 								<tr>
 									<th style="width: 30%">登録者数</th>
