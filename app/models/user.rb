@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_many :orders
   has_many :shippings
 
+  acts_as_paranoid
+
  with_options unless: :provider do
    validates :first_name, presence: true
    validates :last_name, presence: true
