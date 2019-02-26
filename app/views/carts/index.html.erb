@@ -21,7 +21,7 @@
 								<td class="align-middle"><%= attachment_image_tag(cart.product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
 								<td class="align-middle"><%= cart.product.product_name %></td>
 									<%= form_for cart do |f| %>
-								<td class="align-middle"><%= f. select :quantity, 1...cart.product.stock_quantity %>
+								<td class="align-middle"><%= f. select :quantity, 1...(cart.product.stock_quantity + 1) %>
 									<%= f.submit "更新する",class: "btn btn-default btn-xs btn-size" %></td>
 									<% end %>
 								<td class="align-middle"><%= number_with_delimiter(cart.product.price) %>円</td>

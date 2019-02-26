@@ -26,12 +26,17 @@
 					<th><%= @product.company %></th>
 				</tr>
 				<tr>
-					<th class="text-right" style="width:20%">在庫数 :</th>
-					<th><%= @product.stock_quantity %>枚</th>
+					<% if @product.stock_quantity  <= 0 %>
+						<th class="text-right" style="width:20%">在庫数 :</th>
+						<th style="color:red;">売り切れ</th>
+					<% else %>
+						<th class="text-right" style="width:20%">在庫数 :</th>
+						<th><%= @product.stock_quantity %>枚</th>
+					<% end %>
 				</tr>
 				<tr>
 					<%= form_for @cart do |f| %>
-						<th class="text-right" style="width:20%">数量 <%= f. select :quantity, 1...@product.stock_quantity %> :</th>
+						<th class="text-right" style="width:20%">数量 <%= f. select :quantity, 1...(@product.stock_quantity + 1) %> :</th>
 						<th><%= f.hidden_field :product_id, :value => params[:id] %>
 						<%= f.submit 'カートに入れる', class: "btn btn-info glyphicon "%></th>
 					<% end %>
