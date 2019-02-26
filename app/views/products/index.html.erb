@@ -45,6 +45,9 @@
 								<p class="puro-size">価格: <%= product.price %>円</p>
 								<p class="puro-size">ジャンル: <%= product.genre %></p>
 								<p class="puro-size">アーティスト名: <%= product.artist_name %></p>
+								<% if product.stock_quantity <= 0 %>
+									<p class="puro-size" style="color:red;">(売り切れ中...ごめんね)</p>
+								<% end %>
 						</div>
 					<% end %>
 					<%= paginate @products %>
