@@ -1,7 +1,7 @@
 class Admin::ProductsController < ApplicationController
 before_action :authenticate_user!
 before_action :only_admin_user
-PER = 5
+PER = 30
 	def new
 		@product = Product.new
 		#@disc = @product.discs.build
