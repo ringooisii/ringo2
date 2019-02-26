@@ -16,6 +16,7 @@
 				</thead>
 				<tbody class="text-left">
 					<% @users.each do |user| %>
+					<% next if user.id == 1 %>
 					<tr>
 						<td><%= user.id %></td>
 						<td><%= user.first_name %></td>
