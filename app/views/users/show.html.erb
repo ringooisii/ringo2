@@ -41,22 +41,24 @@
 						<th class="align-middle">発送状況</th>
 					</tr>
 					<!-- ログインしているuserの商品情報を表示 -->
-					<% current_user.orders.each do |order| %>
-					<% if order.order_status == "未発送" %>
-						<!-- 　注文履歴の表示 -->
-						<% order.order_products.each do |order_product|%>
-							<tr>
-								<th class="align-middle"><%= order_product.created_at.strftime("%Y-%m-%d %H:%M:%S") %></th>
-								<th class="align-middle"><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '80x80') %></th>
-								<th class="align-middle"><%= order_product.order_name %></th>
-								<th class="align-middle"><%= order_product.order_quantity %>枚</th>
-								<th class="align-middle"><%= number_with_delimiter(order_product.order_price) %>円</th>
-								<th class="align-middle"><%= number_with_delimiter(order_product.order_price * order_product.order_quantity) %>円</th>
-								<th class="align-middle"><%= order.order_status %></th>
-							</tr>
-						<% end %>
+					<% current_user.orders.order(created_at: "desc").each do |order| %>
+					  <tr class="order-group">
+						<% if order.order_status == "未発送" %>
+							<!-- 　注文履歴の表示 -->
+							<% order.order_products.each do |order_product|%>
+								<tr>
+									<th class="align-middle"><%= order_product.created_at.strftime("%Y-%m-%d %H:%M:%S") %></th>
+									<th class="align-middle"><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '80x80') %></th>
+									<th class="align-middle"><%= order_product.order_name %></th>
+									<th class="align-middle"><%= order_product.order_quantity %>枚</th>
+									<th class="align-middle"><%= number_with_delimiter(order_product.order_price) %>円</th>
+									<th class="align-middle"><%= number_with_delimiter(order_product.order_price * order_product.order_quantity) %>円</th>
+									<th class="align-middle"><%= order.order_status %></th>
+								</tr>
+							<% end %>
 
-					<% end %>
+						<% end %>
+					  </tr>
 					<% end %>
 				</tbody>
 
@@ -77,21 +79,23 @@
 						<th class="align-middle">発送状況</th>
 					</tr>
 					<!-- ログインしているuserの商品情報を表示 -->
-					<% current_user.orders.each do |order| %>
-					<% if order.order_status != "未発送" %>
-						<!-- 　注文履歴の表示 -->
-						<% order.order_products.each do |order_product|%>
-							<tr>
-									<th class="align-middle"><%= order_product.created_at.strftime("%Y-%m-%d %H:%M:%S") %></th>
-									<th class="align-middle"><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></th>
-									<th class="align-middle"><%= order_product.order_name %></th>
-									<th class="align-middle"><%= order_product.order_quantity %>枚</th>
-									<th class="align-middle"><%= number_with_delimiter(order_product.order_price) %>円</th>
-									<th class="align-middle"><%= number_with_delimiter(order_product.order_price * order_product.order_quantity) %>円</th>
-									<th class="align-middle"><%= order.order_status %></th>
-							</tr>
+					<% current_user.orders.order(created_at: "desc").each do |order| %>
+					 <tr class="order-group">
+						<% if order.order_status != "未発送" %>
+							<!-- 　注文履歴の表示 -->
+							<% order.order_products.each do |order_product|%>
+								<tr>
+										<th class="align-middle"><%= order_product.created_at.strftime("%Y-%m-%d %H:%M:%S") %></th>
+										<th class="align-middle"><%= attachment_image_tag(order_product.product, :product_image, fallback: "noimage.png",size: '100x100') %></th>
+										<th class="align-middle"><%= order_product.order_name %></th>
+										<th class="align-middle"><%= order_product.order_quantity %>枚</th>
+										<th class="align-middle"><%= number_with_delimiter(order_product.order_price) %>円</th>
+										<th class="align-middle"><%= number_with_delimiter(order_product.order_price * order_product.order_quantity) %>円</th>
+										<th class="align-middle"><%= order.order_status %></th>
+								</tr>
+							<% end %>
 						<% end %>
-					<% end %>
+					  </tr>
 					<% end %>
 				</tbody>
 			</table>
