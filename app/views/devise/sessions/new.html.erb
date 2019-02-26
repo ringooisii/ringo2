@@ -1,3 +1,4 @@
+<% flash[:notice] %>
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-md-offset-4 sign-in-box">
@@ -6,11 +7,8 @@
           <h2 class="panel-title">ログイン</h2>
         </div>
         <div class="panel-body">
-
           <div class="sign-in-box_main">
             <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-               <!-- <%= devise_error_messages! %> -->
-
               <div class="field">
                 <%= f.label :メールアドレス %><br />
                 <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder:"メールアドレス" %>

@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
   before_action :authenticate_user!
+
+
   def index
     @carts = current_user.carts
   end
@@ -7,8 +9,12 @@ class CartsController < ApplicationController
   def create
   	@cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-  	@cart.save
-  	redirect_to carts_path
+  	if @cart.save
+  	   redirect_to carts_path
+    else
+      flash[:notice] = "product was successfully created."
+      redirect_to products_path
+    end
   end
 
   def update
