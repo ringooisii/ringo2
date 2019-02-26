@@ -9,11 +9,11 @@
 		<table class="table admin_product_table">
 			<thead>
 			<tr>
-				<th>商品ID</th>
-				<th>サムネイル</th>
-				<th>タイトル</th>
-				<th>在庫</th>
-				<th>価格</th>
+				<th class="align-middle">商品ID</th>
+				<th class="align-middle">サムネイル</th>
+				<th class="align-middle">タイトル</th>
+				<th class="align-middle">在庫</th>
+				<th class="align-middle">価格</th>
 				<th></th>
 				<th></th>
 			</tr>
@@ -21,13 +21,13 @@
 			<% @product.each do |product| %>
 			<tbody>
 			<tr>
-				<th><%= product.id %></th>
-				<td><%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
-				<td><%= product.product_name %></td>
-				<td><%= product.stock_quantity %></td>
-				<td><%= number_with_delimiter(product.price) %></td>
-				<td><%= link_to "詳細", admin_product_path(product.id), class: "btn btn-default" %></td>
-				<td><%= link_to "削除", admin_product_path(product.id), method: :delete,"data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
+				<td class="align-middle"><%= product.id %></td>
+				<td class="align-middle"><%= attachment_image_tag(product, :product_image, fallback: "noimage.png",size: '100x100') %></td>
+				<td class="align-middle"><%= product.product_name %></td>
+				<td class="align-middle"><%= product.stock_quantity %>枚</td>
+				<td class="align-middle"><%= number_with_delimiter(product.price) %>円</td>
+				<td class="align-middle"><%= link_to "商品詳細へ", admin_product_path(product.id), class: "btn btn-default" %></td>
+				<td class="align-middle"><%= link_to "削除", admin_product_path(product.id), method: :delete,"data-confirm" => "商品を削除しますか？", class: "btn btn-danger" %></td>
 				<% end %>
 			</tr>
 			</tbody>
