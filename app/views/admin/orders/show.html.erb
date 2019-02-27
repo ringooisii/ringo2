@@ -18,15 +18,15 @@
         </div>
         <div class="col-md-5">
           <label>購入日時</label>
-          <p><%= @order.created_at %></p>
+          <p><%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
           <label>発送日時</label>
           <p><% if @order.order_status == "発送済み" %>
-                <%= @order.updated_at %>
+                <%= @order.updated_at.strftime("%Y-%m-%d %H:%M:%S") %>
               <% else %>
                 未発送
               <% end %>
           </p>
-          <label>配送先</label>
+          <label>配送先住所</label>
           <p><%= @order.order_address %></p>
           <div class="total-right">
             <% @order_products.inject(0) { |sum, order_product| @total = sum + (order_product.order_quantity * order_product.order_price) } %>
@@ -52,11 +52,11 @@
             <tr>
               <td><%= p.product_id %></td>
               <td><%= p.order_name %></td>
-              <td><%= p.order_quantity %></td>
-              <td><%= number_with_delimiter(p.order_price) %></td>
+              <td><%= p.order_quantity %>枚</td>
+              <td><%= number_with_delimiter(p.order_price) %>円</td>
               <td>
                 <% @subtotal = p.order_quantity * p.order_price %>
-                <%= number_with_delimiter(@subtotal) %>
+                <%= number_with_delimiter(@subtotal) %>円
               </td>
               <td>
                 <div>
