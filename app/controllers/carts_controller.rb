@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_login_user
 
 
   def index
@@ -9,12 +9,8 @@ class CartsController < ApplicationController
   def create
   	@cart = Cart.new(cart_params)
     @cart.user_id = current_user.id
-  	if @cart.save
-  	   redirect_to carts_path
-    else
-      flash[:notice] = "product was successfully created."
-      redirect_to products_path
-    end
+  	@cart.save
+  	redirect_to carts_path
   end
 
   def update
@@ -32,6 +28,13 @@ class CartsController < ApplicationController
   private
   def cart_params
     params.require(:cart).permit(:quantity, :product_id)
+  end
+
+  def authenticate_login_user
+    unless :authenticate_user!
+    redirect_to products_path
+    flash[:notice] = "ログインして下さい"
+    end
   end
 
 end

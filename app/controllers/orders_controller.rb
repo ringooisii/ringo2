@@ -22,8 +22,10 @@ class OrdersController < ApplicationController
   	  	 cart.destroy#カートの削除
       end
       redirect_to user_path(current_user)
+      flash[:notice] = "注文が確定しました"
     else
       redirect_to shippings_path
+      # flash[:notice] = "配送先を登録して下さい"
     end
   end
 

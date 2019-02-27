@@ -28,8 +28,10 @@ class Admin::UsersController < ApplicationController
 		user.update(user_params)
 		if user.save
 			redirect_to admin_user_path(user.id)
+      flash[:notice] = "登録者情報を編集しました"
 		else
 			render :edit
+      flash[:notice] = "入力情報に誤りがあります"
 		end
 	end
 
@@ -37,6 +39,7 @@ class Admin::UsersController < ApplicationController
 		user = User.find(params[:id])
 		user.destroy
 		redirect_to admin_users_path
+    flash[:notice] = "登録者を削除しました"
 	end
 
 

@@ -26,6 +26,9 @@
               <%= image_tag "logo.png" %>
           <% end %>
           <p>管理者画面</p>
+          <div class="message_notice">
+          <%= flash[:notice] %>
+          </div>
           <nav class="head_navi clearfix">
             <li class="navi-list"><%= link_to 'TOP画面へ戻る', products_path %></li>
             <li class="navi-list"><%= link_to '登録者 一覧', admin_users_path %></li>
@@ -39,6 +42,9 @@
           <%= link_to root_path do %>
               <%= image_tag "logo.png" %>
           <% end %>
+          <div class="message_notice">
+          <%= flash[:notice] %>
+          </div>
           <nav class="head_navi clearfix">
             <li class="navi-list"><br>
               <%= link_to carts_path do %>
@@ -60,6 +66,9 @@
           <%= link_to root_path do %>
               <%= image_tag "logo.png" %>
           <% end %>
+          <div class="message_notice">
+          <%= flash[:notice] %>
+          </div>
           <nav class="head_navi clearfix">
             <li class="navi-list">
               <%= link_to new_user_registration_path,data: {"turbolinks" => false} do %>
