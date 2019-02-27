@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_login_user
+
+
   def index
     @carts = current_user.carts
   end
@@ -32,6 +34,13 @@ end
   private
   def cart_params
     params.require(:cart).permit(:quantity, :product_id)
+  end
+
+  def authenticate_login_user
+    unless :authenticate_user!
+    redirect_to products_path
+    flash[:notice] = "ログインして下さい"
+    end
   end
 
 end

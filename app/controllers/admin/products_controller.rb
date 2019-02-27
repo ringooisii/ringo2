@@ -16,11 +16,11 @@ PER = 30
 	def create
 		product = Product.new(product_params)
 	 if product.save
-	 	flash[:create] = "※商品を登録しました"
+	 	flash[:notice] = "商品を登録しました"
 		redirect_to  admin_products_path
 	 else
 	 	@product = Product.new
-	 	flash[:notice] = "※入力漏れがあります"
+	 	flash[:notice] = "入力漏れがあります"
 	 	render action: :new
 	 end
 	end
@@ -42,16 +42,17 @@ PER = 30
 			@product = Product.find_by(id: params[:id])
 		else
 			redirect_to admin_product_path(params[:id])
+			flash[:notice] = "商品情報を編集しました"
 		end
 	end
 
 	def update
 			@product = Product.find(params[:id])
 		if @product.update(product_params)
-			flash[:edit] = "※商品を編集しました"
+			flash[:notice] = "商品を編集しました"
 			redirect_to admin_product_path(params[:id])
 		else
-			flash[:edit] = "※入力漏れがあります"
+			flash[:notice] = "入力漏れがあります"
 			render action: :edit
 		end
 	end
