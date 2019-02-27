@@ -37,7 +37,7 @@
         <%= form_for(@order) do |f| %>
           <% current_user.shippings.each do |shipping| %>
             <div class="user-shipping-address">
-              <%= f.radio_button :user_id, shipping.id %>
+              <%= f.radio_button :user_id, shipping.id, {:checked => true} %>
               &nbsp;&nbsp;<span>お名前: <%= shipping.shipping_name %></span><br>
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<!-- 空白 -->
                 &nbsp;&nbsp;<span>住所: <%= shipping.shipping_address %></span>
