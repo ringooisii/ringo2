@@ -35,9 +35,13 @@
 				<div class="total-right">
 				<span class="total-name">総合計:  </span><span class="total-price"><%= number_with_delimiter(@total) %>円</span><span>  (税込)</span>
 				</div>
-				<div class="actions row">
 					<br>
+					<% if @carts.empty? %>
+					<p style="text-align:center; color:red;">カート内に商品がありません(>__<)</p>
+					<% else %>
+					<div class="actions row">
 					<%= link_to "注文確認画面へ", orders_path,data: {"turbolinks" => false}, class: "btn btn-default col-md-offset-3 col-md-6" %>
+					<% end %>
 				</div>
 				<br>
 			</div>

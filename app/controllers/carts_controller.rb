@@ -7,11 +7,17 @@ class CartsController < ApplicationController
   end
 
   def create
-  	@cart = Cart.new(cart_params)
-    @cart.user_id = current_user.id
-  	@cart.save
-  	redirect_to carts_path
+     if @cart = Cart.find_by(user_id: current_user.id, product_id: params[:cart][:product_id] ) #全く同じものを探してくれる
+        @cart.quantity += params[:cart][:quantity].to_i
+        @cart.save
+     redirect_to carts_path
+    else
+     @cart = Cart.new(cart_params)
+     @cart.user_id = current_user.id
+  	 @cart.save
+  	 redirect_to carts_path
   end
+end
 
   def update
     @cart = Cart.find(params[:id])

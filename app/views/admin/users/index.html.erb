@@ -9,7 +9,6 @@
 					<tr>
 						<th>登録者 ID</th>
 						<th>名前</th>
-						<th></th>
 						<th>メールアドレス</th>
 						<th></th>
 					</tr>
@@ -19,10 +18,9 @@
 					<% next if user.id == 1 %>
 					<tr>
 						<td><%= user.id %></td>
-						<td><%= user.first_name %></td>
-						<td><%= user.last_name %></td>
+						<td><%= user.first_name %><%= user.last_name %></td>
 						<td><%= user.email %></td>
-						<td><div><%= link_to '詳細', admin_user_path(user.id), class: "btn btn-default" %></div></td>
+						<td><div><%= link_to 'ユーザー詳細&購入履歴', admin_user_path(user.id), class: "btn btn-default" %></div></td>
 					</tr>
 					<% end %>
 				</tbody>

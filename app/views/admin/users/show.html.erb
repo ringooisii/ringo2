@@ -6,14 +6,14 @@
 					<h2 class="panel-title">登録者 詳細情報</h2>
 				</div>
 				<div class="panel-body">
-					<table class="table">
-						<tr><th>登録者 ID：</th><td><%= @user.id %></td></tr>
-						<tr><th>苗字：</th><td><%= @user.first_name %></td></tr>
-						<tr><th>名前：</th><td><%= @user.last_name %></td></tr>
-						<tr><th>郵便番号：</th><td><%= @user.postcode %></td></tr>
-						<tr><th>住所：</th><td><%= @user.address %></td></tr>
-						<tr><th>メールアドレス：</th><td><%= @user.email %></td></tr>
-						<tr><th>電話番号：</th><td><%= @user.phone_number %></td></tr>
+					<table class="table" style="table-layout: fixed;">
+						<tr><th style="width:22px">登録者 ID：</th><td><%= @user.id %></td></tr>
+						<tr><th style="width:22px">姓：</th><td><%= @user.first_name %></td></tr>
+						<tr><th style="width:22px">名：</th><td><%= @user.last_name %></td></tr>
+						<tr><th style="width:22px">郵便番号：</th><td><%= @user.postcode %></td></tr>
+						<tr><th style="width:22px">住所：</th><td><%= @user.address %></td></tr>
+						<tr><th style="width:22px">メールアドレス：</th><td><%= @user.email %></td></tr>
+						<tr><th style="width:22px">電話番号：</th><td><%= @user.phone_number %></td></tr>
 					</table>
 				</div>
 				<%= link_to '編集', edit_admin_user_path(@user.id),class: "btn btn-default center-block" %>

@@ -1,4 +1,4 @@
-<p class="erorr-text"><h3></h3>
+<p class="erorr-text">
 <div class="admin_product_image">
 <div class="container">
 	<div class="row">
@@ -8,34 +8,33 @@
 				<div class="panel-body">
 					<dl class="dl-horizontal">
 
-					<dt>アーティスト名</dt>
+					<dt>アーティスト名 :</dt>
 					<dd><%= @products.artist_name %></dd>
 
-					<dt>シングル名</dt>
+					<dt>シングル/アルバム名 :</dt>
 					<dd><%= @products.product_name %></dd>
 
-					<dt>サムネイル</dt>
+					<dt>サムネイル :</dt>
 					<dd><%= attachment_image_tag @products, :product_image, fallback: "noimage.png",size: '125x100' %></dd>
 
-					<dt>価格</dt>
-					<dd><%= @products.price %></dd>
+					<dt>価格 :</dt>
+					<dd><%= number_with_delimiter(@products.price) %>円</dd>
 
-					<dt>レーベル</dt>
+					<dt>レーベル :</dt>
 					<dd><%= @products.genre %></dd>
 
-						<% @products.discs.each do |disc| %>
-							<dt>ディスク</dt>
+					<dt>在庫 :</dt>
+					<dd><%= @products.stock_quantity %>枚</dd>
+					<% @products.discs.each do |disc| %>
+							<dt>ディスク<%= disc.disc_number %> :</dt>
 							<dd><%= disc.disc_name %></dd>
-
+							<dt>曲名 :</dt>
 						<% disc.songs.each do |song| %>
-							<dt>曲名</dt>
-							<dd><%= song.title %></dd>
+							<dd><%= song.song_number %>,<%= song.title %></dd>
 
 						<% end %>
 						<% end %>
 
-					<dt>在庫</dt>
-					<dd><%= @products.stock_quantity %></dd>
 
 				</div>
 				</div>
